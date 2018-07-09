@@ -28,6 +28,7 @@ transition: 'fade'
 </style>
 
 # ES - React Workshop
+
 <small>by Peter Cosemans</small>
 <br>
 <br>
@@ -52,39 +53,38 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 
 - [JavaScript Tooling and Editor](./javaScript-tooling-and-editor.md)
 - [Javascript Refresh](./javascript-refresh.md)
-- [React Introduction](./react-intyroduction.md)
+- [React Introduction](./react-introduction.md)
 - [React Advanced](./react-advanced.md)
-- [Unit Testing](./unit-testing.md)
+- [React Forms](./react-forms.md)
+- [React State Management](./react-state-management.md)
 
 ---
 
 ## Me - Peter
 
 - Peter Cosemans (Euricom)
-    - peter.cosemans@euri.com
-    - https://github.com/mjrio
-    - http://github.com/euricom
+  - peter.cosemans@euri.com
+  - https://github.com/mjrio
+  - http://github.com/euricom
 - 12 year Microsoft .NET Development
 - 5 year Full Stack JavaScript Development
 - Architect, Tech Coach, Trainer
-    + JavaScript
-    + Angular, React, VueJS
-    + NodeJS, MongoDB
-    + Mobile (hybrid)
-    + Serverless
+  - JavaScript
+  - Angular, React, VueJS
+  - NodeJS, MongoDB
+  - Mobile (hybrid)
+  - Serverless
 
 ---
 
 ## Prerequisites
 
 - Knowledge / Experience
-    + Javascript (jquery)
-    + HTML / CSS / BootStrap
-    + Chrome Dev Tools
+  - Javascript (jquery)
+  - HTML / CSS / BootStrap
+  - Chrome Dev Tools
 - System Setup
-    + Visual Studio Code - https://code.visualstudio.com
-    + Node.js 9.3.0 - https://nodejs.org/en/
-    + Git - https://git-scm.com/download/win
-    + ConEmu: https://conemu.github.io/
-
-
+  - Visual Studio Code - https://code.visualstudio.com
+  - Node.js 9.3.0 - https://nodejs.org/en/
+  - Git - https://git-scm.com/download/win
+  - ConEmu: https://conemu.github.io/
