@@ -1,0 +1,24 @@
+{
+  "name": "euri-test-api",
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "node ./server.js",
+    "start:watch": "nodemon ./server.js"
+  },
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "cors": "^2.8.4",
+    "express": "^4.15.2",
+    "faker": "^4.1.0",
+    "morgan": "^1.8.1",
+    "nodemon": "^1.17.5",
+    "showdown": "^1.8.6",
+    "sort-on": "^2.0.0",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "prettier": "^1.5.3"
+  }
+}
