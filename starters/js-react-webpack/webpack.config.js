@@ -22,6 +22,10 @@ module.exports = {
         loader: 'style-loader!css-loader',
       },
       {
+        test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file-loader',
+      },
+      {
         test: /\.svg$/,
         exclude: /node_modules/,
         loader: 'svg-react-loader',
