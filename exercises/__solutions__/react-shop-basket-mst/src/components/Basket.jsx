@@ -32,7 +32,7 @@ class Basket extends Component {
     // subscribe to addProduct event
     pubsub.subscribe('addProduct', (msg, data) => {
       this.setState(state => {
-        state.basket.addProduct(data.product, 1);
+        state.basket.addProduct(data.product, data.quantity);
         return state.basket;
       });
     });

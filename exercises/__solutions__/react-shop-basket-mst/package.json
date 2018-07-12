@@ -17,6 +17,8 @@
     "axios": "^0.18.0",
     "bootstrap": "3",
     "intl": "^1.2.5",
+    "mobx": "^5.0.3",
+    "mobx-state-tree": "^2.2.0",
     "prop-types": "^15.6.2",
     "pubsub-js": "^1.6.0",
     "react": "^16.4.1",

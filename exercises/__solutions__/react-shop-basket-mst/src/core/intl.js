@@ -1,5 +1,3 @@
-/* eslint-disable import/prefer-default-export */
-
 export function toCurrency(amount) {
   const numberFormat = Intl.NumberFormat('nl-BE', {
     style: 'currency',
@@ -14,5 +12,5 @@ export function toPercentage(amount) {
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
-  return `${numberFormat.format(amount / 100)}`;
+  return `${numberFormat.format(amount)}`;
 }

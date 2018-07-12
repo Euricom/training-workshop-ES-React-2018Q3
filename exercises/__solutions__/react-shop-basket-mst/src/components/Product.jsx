@@ -1,17 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import pubsub from 'pubsub-js';
+
+import AddProductButton from './AddProductButton';
 
 import { toCurrency, toPercentage } from '../core/intl';
 
 class Product extends Component {
-  addProduct = product => {
-    pubsub.publish('addProduct', { product });
-  };
-
   render() {
-    const { product } = this.props;
-    const discount = 100 - (product.price / product.basePrice) * 100;
+    const { product, onAdd } = this.props;
+    const discount = 1 - product.price / product.basePrice;
     return (
       <div>
         <div className="panel panel-default">
@@ -37,24 +34,12 @@ class Product extends Component {
                     <strong>Price:</strong>
                   </td>
                   <td>
-                    {toCurrency(product.price)}{' '}
-                    {!!discount && `( -${toPercentage(discount)})`}
+                    {toCurrency(product.price)} {!!discount && `( -${toPercentage(discount)})`}
                   </td>
                 </tr>
               </tbody>
             </table>
-            {!product.stocked && (
-              <button
-                type="button"
-                className="btn btn-primary btn-sm"
-                onClick={() => this.addProduct(product)}
-              >
-                Add
-              </button>
-            )}
-            {product.stocked && (
-              <span style={{ color: 'red' }}>Out of Stock</span>
-            )}
+            <AddProductButton stocked={product.stocked} onClick={onAdd} />
           </div>
         </div>
       </div>

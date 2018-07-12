@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import pubsub from 'pubsub-js';
 
 import * as productService from '../services/productService';
 import Product from './Product';
@@ -16,6 +17,10 @@ class Products extends Component {
     });
   }
 
+  addProduct(product, quantity) {
+    pubsub.publish('addProduct', { product, quantity });
+  }
+
   render() {
     const { products } = this.state;
     return (
@@ -24,7 +29,7 @@ class Products extends Component {
         <div className="flex-grid">
           {products.map(product => (
             <div className="col" key={product.id}>
-              <Product product={product} />
+              <Product product={product} onAdd={quantity => this.addProduct(product, quantity)} />
             </div>
           ))}
         </div>

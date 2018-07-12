@@ -13,3 +13,7 @@ body {
 .col {
   width: 32%;
 }
+
+.input-field {
+  margin-right: 10px;
+}
