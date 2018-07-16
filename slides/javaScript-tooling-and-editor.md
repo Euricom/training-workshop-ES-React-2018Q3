@@ -12,7 +12,7 @@ Copyright (c) 2017-2018 Euricom nv.
 </small>
 
 <!-- markdownlint-disable -->
-
+<br>
 <style type="text/css">
 .reveal h1 {
     font-size: 3.0em;

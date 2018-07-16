@@ -16,6 +16,7 @@ Copyright (c) 2018 Euricom nv.
 </small>
 
 <!-- markdownlint-disable -->
+<br>
 <style type="text/css">
 .reveal section img {
     background:none;

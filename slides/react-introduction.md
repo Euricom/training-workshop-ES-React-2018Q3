@@ -8,14 +8,16 @@ verticalSeparator: "^\\*\\*\\*"
 
 ## Introduction
 
-<img src="./images/react.png" width="300px" style: "{border: none}"/><br>
+<img src="./images/react.png" width="300px"/><br>
 
 <small>
 by Peter Cosemans<br>
 Copyright (c) 2018 Euricom nv.
 </small>
 
+
 <!-- markdownlint-disable -->
+<br>
 <style type="text/css">
 .reveal section img {
     background:none;
