@@ -1,8 +1,8 @@
 ---
 title: JavaScript Refresh
 transition: 'fade'
+verticalSeparator: "^\\*\\*\\*"
 ---
-
 
 # JavaScript Refresh
 #### All you need to know to build React apps
@@ -13,14 +13,36 @@ transition: 'fade'
 Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensource.org/licenses/MIT).
 </small>
 
+<!-- markdownlint-disable -->
 <br>
 <style type="text/css">
+.reveal section img {
+    background:none;
+    border:none;
+    box-shadow:none;
+}
+.reveal h1 {
+    font-size: 3.0em;
+}
+.reveal h2 {
+    font-size: 2.00em;
+}
+.reveal h3 {
+    font-size: 1.00em;
+}
+.reveal p {
+    font-size: 70%;
+}
+.reveal blockquote {
+    font-size: 100%;
+}
 .reveal pre code {
     display: block;
     padding: 5px;
     overflow: auto;
     max-height: 800px;
     word-wrap: normal;
+    font-size: 100%;
 }
 </style>
 
@@ -51,7 +73,8 @@ Note:
 - ECMAScript 6 (ES6/ES2015): The 6th edition of ECMAScript, standardized in 2015.
 - ECMAScript 2016: The 7th edition of ECMAScript
 
-----
+<!-- prettier-ignore -->
+***
 
 ## ES6+ Today
 
@@ -67,7 +90,8 @@ Note:
 # What you should know
 > A quick course on JavaScript
 
-----
+<!-- prettier-ignore -->
+***
 
 ## Var, Let, Const
 
@@ -79,11 +103,16 @@ var name = 'Peter'
 const name = 'Peter'
 let value = 10;
 value = 11;
+
+// It's a constant reference, not constant value
+const obj = { name: 'peter' }
+obj.name = 'bob' ;    // no error
 ```
 
 > In ES6+ always prefer ```const``` and ```let``` over ```var```.
 
-----
+<!-- prettier-ignore -->
+***
 
 ## Functions
 
@@ -100,18 +129,18 @@ const bar = function(arg){
     ...
 };
 
-// Function Expression in object
+// Function in objects
 const obj = {
   name: 'Peter',
   bar: function(arg) {  // ES5 style
   },
   foo() {               // ES6 style
-    ...
   }
 }
 ```
 
-----
+<!-- prettier-ignore -->
+***
 
 ## Arrow Functions
 
@@ -129,10 +158,15 @@ const bar = (arg) => {
 }
 ```
 
+<!-- prettier-ignore -->
+***
+
+## Arrow Functions
+
 Simpler syntax
 
 ```js
-var createGreeting = function(message, name) {
+const createGreeting = function(message, name) {
     return message + name;
 }
 
@@ -145,21 +179,46 @@ const arrowGreeting = (message, name) => {
 const arrowGreeting = (message, name) => message + name;
 ```
 
-----
+<!-- prettier-ignore -->
+***
+
+## Arrow Functions
+
+Simpler syntax
+
+```js
+const createGreeting = function(message, name) {
+    return {
+        message,
+        name
+    }
+}
+
+// Simplified multi line return
+
+const createGreeting = (message, name) => ({
+    message,
+    name
+})
+```
+
+
+<!-- prettier-ignore -->
+***
 
 # this
 
 The value of the this reference is defined by the following rules:
 
-- The call context
-- Explicit binding
-- Hard binding
 - new operator
 - Arrow function
+- Hard binding
+- Explicit binding
+- The call context
 
-Rules are applied in reverse order.
 
-----
+<!-- prettier-ignore -->
+***
 
 ## this
 ### The call context
@@ -176,7 +235,8 @@ obj.doThis();   // output: 'peter'
 ```
 Follow the dot (.)
 
-----
+<!-- prettier-ignore -->
+***
 
 ## this
 ### Explicit binding
@@ -193,7 +253,8 @@ doThis.apply(otherObj, ['Sir'])   // output: 'Sir john'
 
 Use 'call' or 'apply'
 
-----
+<!-- prettier-ignore -->
+***
 
 ## this
 ### Hard binding
@@ -219,9 +280,11 @@ const car = {
 car.start();        // output: Bmw started
 ```
 
-----
+<!-- prettier-ignore -->
+***
 
-arrow function
+## this
+### arrow function
 
 ```js
 const car = {
@@ -234,7 +297,10 @@ const car = {
 }
 ```
 
-----
+It's hard binding to the outer scope
+
+<!-- prettier-ignore -->
+***
 
 ## this
 ### New operator
@@ -258,13 +324,173 @@ class User {
 const user = new User('peter');
 user.name;         // 'peter'
 ```
+<!-- prettier-ignore -->
+***
+
+## Spread operator
+
+```js
+const myObject = { id: 12345, name: 'abc' }
+
+// combine object with all properties of other
+const newObject = {
+    ...myObject
+    id: 54321
+}
+
+// copy array
+const newArray = [...oldArray];
+
+// Combine two arrays
+const x = [1, 2];
+const y = [3, 4];
+x.push(...y); // x is [1, 2, 3, 4]
+```
+
+<!-- prettier-ignore -->
+***
+
+## Destructuring
+
+```js
+const myConfig = {
+  url: 'www.google.com/api',
+  data: 'some value',
+  methodType: 'POST',
+};
+
+const { url } = myConfig;
+```
+
+destructor the arguments
+
+```js
+function getData({url}) {
+    console.log(url)
+}
+getData(myConfig)
+```
+
+<!-- prettier-ignore -->
+***
+
+## Decorators
+
+```js
+// A simple decorator
+@Annotation
+class MyClass {}
+
+function Annotation(target) {
+  target.annotated = true; // Add a property on target
+}
+```
+
+```js
+// A decorator with argument
+@displayName('Auto')
+class Car {}
+
+function displayName(name) {
+  return function(target) {
+    target.displayName = name;
+  };
+}
+```
+
+A decorator is just a function
+
+<!-- prettier-ignore -->
+***
+
+## Decorators
+
+To enable decorators you must add a babel plugin
+
+[babel-plugin-transform-decorators-legacy](https://www.npmjs.com/package/babel-plugin-transform-decorators-legacy)
+
+
+```
+{
+    "preset": "react",
+    "plugins": ["transform-decorators-legacy"]
+}
+```
+
+or enable stage-2
+
+```
+{
+    "preset": ["react", "stage-2"]
+}
+```
+
+---
+
+# Modules
+> Structure your code
+
+<!-- prettier-ignore -->
+***
+
+## CommonJS (CJS)
+
+```js
+// myLib.js
+module.exports = {
+    setName: function() {
+    }
+}
+
+// main.js
+const myLib = require('./mylib.js');
+myLib.setName();
+```
+
+Used by nodeJS
+
+
+<!-- prettier-ignore -->
+***
+
+## ES Modules
+
+myService.js
+
+```js
+export const MAX_LENGTH = 1000;        // named const export
+export class Car() {                   // named class export
+    ...
+}
+const config = {
+    ...
+}
+export default config;                 // default (unnamed) export
+```
+
+main.js
+
+```js
+import config from './service';             // default import
+import { MAX_LENGTH, Car } from './service' // named imports
+
+import * as lib from './service';           // import all
+console.log(lib.MAX_LENGTH)
+const car = new lib.Car();
+```
+
+<!-- prettier-ignore -->
+***
+
+
 
 ---
 
 # Array functions
 > makes your live easier
 
-----
+<!-- prettier-ignore -->
+***
 
 ## Array handling
 
@@ -280,14 +506,10 @@ const companies = [
 
 Usefull Array functions
 
-- forEach
-- map
-- reduce
-- filter
-- sort
-- find
+`forEach`, `map`, `reduce`, `filter`, `sort`, `find`
 
-----
+<!-- prettier-ignore -->
+***
 
 ## Array - for loops
 
@@ -317,9 +539,10 @@ for (let item of companies)
 })
 ```
 
-----
+<!-- prettier-ignore -->
+***
 
-## Array - Mapping/Transformation
+## Array - Mapping
 
 Good old for loop
 
@@ -352,7 +575,8 @@ const transformed = companies.map(item => {
 })
 ```
 
-----
+<!-- prettier-ignore -->
+***
 
 ### Array - Calculation (sum, group, ...)
 
@@ -374,7 +598,8 @@ const totEmployees = companies.reduce((acc, item) => {
 }, 0)
 ```
 
-----
+<!-- prettier-ignore -->
+***
 
 ## Array - Filter, Find and Sort
 
@@ -395,9 +620,10 @@ const sortedCompanies = companies.sort((a, b) => a.name > b.name)
 
 <small>[JavaScript Higher Order Functions & Arrays Youtube](https://www.youtube.com/watch?time_continue=495&v=rRgD1yVwIvE)</small>
 
-----
+<!-- prettier-ignore -->
+***
 
-## Usefull cases
+## Examples of use
 
 Chain functions
 
@@ -419,6 +645,11 @@ companies.push({
 })
 ```
 
+<!-- prettier-ignore -->
+***
+
+## Examples of use
+
 Remove an item from an array (don't use splice)
 
 ```js
@@ -435,41 +666,12 @@ company.name = 'Other name'
 
 ---
 
-# ES6
+# Async
 
-> Good to know
+> Don't use callbacks
 
-----
-
-## Simplified object notation
-
-```js
-// ES3/ES5
-function getCar(make, model, value) {
-    return {
-        make: make,
-        model: model,
-        value: value
-    };
-}
-```
-
-vs
-
-```js
-// ES6
-// With property value shorthand syntax, you can omit the property
-// value if key matches variable name.
-function getCar(make, model, value) {
-    return {
-        make,
-        model,
-        value
-    };
-}
-```
-
-----
+<!-- prettier-ignore -->
+***
 
 ## Promises
 
@@ -499,6 +701,11 @@ myAsyncAction(arg)
   })
 ```
 
+<!-- prettier-ignore -->
+***
+
+## Promises
+
 Wait for multiple promises
 
 ```js
@@ -509,133 +716,68 @@ Wait for multiple promises
   });
 ```
 
-----
+<!-- prettier-ignore -->
+***
 
-## String interpollation
-
-```js
-const firstName = 'Peter';
-const lastName = 'Jansens';
-
-// es5 (don't use this anymore)
-const fullName = firstName + ' ' + lastName;
-
-// es6 - string interpollation
-const fullName = `${firstName} ${lastName}`
-```
-Multiline with interpollation
+### Async/await
 
 ```js
-    const message = 'world'
-    const template = `
-        <div>
-            <span>Hello ${message}</span>
-        </div>
-    `;
-```
-
-You can use expressions
-
-```js
-    const message = `1 and 1 make ${1 + 1}`;
-    console.log(message);
-```
-
-> No more string concatenation!
-
----
-
-# JavaScript Modules
-> Keep your code isolated
-
-----
-
-## Need for isolation
-
-awesomeLib/main.js
-
-```js
-// library/main.js
-var name = 'peter'
-function doThis() { console.log('hello', 'peter') }
-```
-
-myApp/component.js
-
-```js
-function setCustomer() {
-  // oops, forgot var
-  name = 'euricom'
+function getCustomers() {
+    return http.get('/api/customers')
+        .then(result => {
+            customers = result.data;
+            return customers;
+        })
+        .catch(err => {
+            console.log(err);
+            return [];
+        })
 }
-setCustomer();
-function doThis() { console.log('byebye', 'peter') }
 ```
 
-----
-
-## IIFE
-
-Immediately-Invoked Function Expression (IIFE).
-
 ```js
-(function() {
-    'use strict'
-    const name = 'peter'
-    console.log(name)
-})();
-```
-
-Export your module
-
-```js
-const myModule = (function() {
-    const myVar = '';
-    function doThis() {
-        console.log(myVar)
+async function getCustomers() {
+    try {
+        const result = await http.get('/api/customers');
+        return result.data
     }
-    return {
-      dothis
+    catch(error) {
+        console.log(err);
+        return [];
     }
-})();
-
-// in other file
-myModule.doThis();
+}
 ```
 
-> And, always use strict mode.
+<!-- prettier-ignore -->
+***
 
-----
-
-## ES Module - Import / Export
-
-myService.js
+### Generators
 
 ```js
-export const MAX_LENGTH = 1000;             // named const export
-export class Car() {                        // named class export
-    ...
+async function getCustomers() {
+    try {
+        const result = await http.get('/api/customers');
+        return result.data
+    }
+    catch(error) {
+        console.log(err);
+        return [];
+    }
 }
-const config = {
-    ...
-}
-export default config;                      // default (unnamed) export
 ```
-
-main.js
 
 ```js
-import config from './service';              // default import
-import { MAX_LENGTH, Car } from './service'  // named imports
-
-import * as lib from './service';            // import all
-console.log(lib.MAX_LENGTH)
-const car = new lib.Car();
+function* getCustomers() {
+    try {
+        const result = yield http.get('/api/customers');
+        return result.data
+    }
+    catch(error) {
+        console.log(err);
+        return [];
+    }
+}
 ```
-
-Oops, not supported by any browser (yet).
-But ES Modules can be used by using a transpiler (Babel)
-
-> Strict mode is default enabled  :)
 
 ---
 
@@ -645,3 +787,4 @@ But ES Modules can be used by using a transpiler (Babel)
 - [You-Dont-Know-JS Book series](https://github.com/getify/You-Dont-Know-JS)
 - [Frontendmasters - Kyle Simpson](https://frontendmasters.com/courses/)
 - [JavaScript Weekly](http://javascriptweekly.com/)
+- [TOP 10 JAVASCRIPT TRAPS FOR A C# DEVELOPER](http://prasadhonrao.com/top-10-javascript-traps-for-a-csharp-developer/)
