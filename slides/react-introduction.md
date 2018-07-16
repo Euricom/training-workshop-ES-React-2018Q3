@@ -91,7 +91,7 @@ Copyright (c) 2018 Euricom nv.
 
 ---
 
-# You first App
+# You first react app
 
 > It's easy
 
@@ -156,7 +156,7 @@ yarn install babel-preset-react --dev
 
 ## webpack
 
-webpack.conf.js (pretty standard)
+webpack.conf.js
 
 ```bash
 module.exports = {
@@ -570,14 +570,14 @@ Oops errors
 
 JSX is still JavaScript, can't use reserved keywords.
 
-ESLint will also capture these errors (config !)
+ESLint will also capture these errors.
 
 <!-- prettier-ignore -->
 ***
 
 ### JSX vs DOM elements
 
-fix
+class vs className
 
 <!-- prettier-ignore -->
 ```jsx
@@ -591,13 +591,9 @@ const template = (
 );
 ```
 
-No Reserved keywords and camel-cased.
+> Some attributes have customized names.
 
-[React Supported DOM Elements](https://reactjs.org/docs/dom-elements.html)
-
-### See also
-
-- dangerouslySetInnerHTML
+See [React Supported DOM Elements](https://reactjs.org/docs/dom-elements.html)
 
 <!-- prettier-ignore -->
 ***
@@ -690,6 +686,34 @@ Direct DOM manipulation is slow. Through the virtual DOM we only apply a patch f
 
 ---
 
+# Exercise 1
+
+### User List (JSX)
+
+- Use raw JSX (no react)
+- Show list of users in table
+- Use users list from user.js
+- Styling with bootstrap
+
+<br>
+### Tips
+
+```
+// install bootstrap 3.x
+
+  yarn add bootstrap@3
+
+// import bootstrap
+
+  import 'bootstrap/dist/css/bootstrap.css';
+
+// doc: styling
+
+  https://www.w3schools.com/bootstrap/bootstrap_tables.asp
+```
+
+---
+
 # Components
 
 > The building blocks of React
@@ -730,10 +754,23 @@ Abstract component tree
 ## Functional Component
 
 ```jsx
-function Welcome(props) {
-  return <h1>Welcome, {props.name}</h1>;
+function Welcome() {
+  return <h1>Welcome</h1>;
 }
 ```
+
+```jsx
+const Welcome = () => {
+  return <h1>Welcome</h1>;
+}
+```
+
+> Most component should be functional component
+
+<!-- prettier-ignore -->
+***
+
+## Functional Component
 
 You can use the component in any JSX expression
 
@@ -741,7 +778,7 @@ You can use the component in any JSX expression
 const template = (
   <div>
     <h1>Title</h1>
-    <Welcome name="peter" />
+    <Welcome />
   </div>
 );
 ```
@@ -757,21 +794,123 @@ User-Defined Components names are Capitalized
 // Welcome.js
 import React, { Component } from 'react';
 
-class Welcome extends Component {
+export default class Welcome extends Component {
   render() {
-    return <h1>Hello, {this.props.name}</h1>;
+    return <h1>Hello</h1>;
   }
 }
 ```
 
 JSX assumes a React object is available, so make sure to import it.
 
-Place all components is separated files (capitalized)
+Place all components in separated files (capitalized)
 
 <!-- prettier-ignore -->
 ***
 
-## Compose Component
+## Component State
+
+Class Components can have state
+
+```jsx
+// app.js
+import React, { Component } from 'react';
+
+export default class App extends Component {
+  state: {
+    message: 'world'
+  }
+  render() {
+    return <h1>Hello {this.state.message}</h1>;
+  }
+}
+```
+
+<!-- prettier-ignore -->
+***
+
+## Component State
+
+Default state
+
+```jsx
+export default class MyComponent extends Component {
+  state = {
+    title: 'My Component Title'
+    counter: this.props.initialValue || 0,
+  };
+  // ...
+}
+```
+
+Default state through constructor
+
+```jsx
+export default class MyComponent extends Component {
+  constructor(props) {
+    super(props);
+    state = {
+      counter: props.initialValue || 0,
+    };
+  }
+  // ...
+}
+```
+
+<!-- prettier-ignore -->
+***
+
+## Events
+
+```jsx
+class MyComponent extends React {
+  onClick() {
+    console.log('clicked');
+  }
+  render() {
+    return (
+      <div>
+        <h1>Title</h1>
+        <button onClick={this.onClick}>Click Me</button>
+      </div>
+    );
+  }
+}
+```
+
+---
+
+# Exercise 2
+
+### Toggle Text (Component State & Event)
+
+- App Component
+- Toggle visibility of some text with a button
+- Try to have multiple solutions
+
+<br>
+### Tip
+
+```
+<!-- toggle text solution 1 -->
+<p>This is some text</p>
+
+<!-- toggle text solution 2 -->
+<p>This is some other text</p>
+
+<button>Toggle Text</button>
+```
+
+---
+
+# Props
+
+> The in and outs of the components
+
+<!-- prettier-ignore -->
+***
+
+## Compose Components
 
 ```jsx
 // App.js
@@ -784,8 +923,7 @@ class App extends Component {
     return (
       <div>
         <h1>Title</h1>
-        <Welcome name="peter" />
-        <Welcome name="bob" />
+        <Welcome />
       </div>
     );
   }
@@ -802,21 +940,8 @@ With props we can pass data from parent to client component
 
 ```jsx
 class App extends Component {
-  customers: [{ id: 1, name: 'consonto' }, { id: 2, name: 'bellware' }];
   render() {
-    return <MyComponent title="my title" cust={customers} />;
-  }
-}
-```
-
-```jsx
-class MyComponent extends Component {
-  render() {
-    return (
-      <div>
-		<h3>{this.props.title}<h3>
-      </div>
-    );
+    return <Greeting firstName="peter" lastName="jansens" />;
   }
 }
 ```
@@ -824,123 +949,54 @@ class MyComponent extends Component {
 <!-- prettier-ignore -->
 ***
 
-### Props
+## Props
 
-Props are passed via constructor
+Accessing props in class component
 
 ```jsx
-class MyComponent extends Component {
+class Greeting extends Component {
   constructor(props) {
     super(props)
   }
   render() {
-    return <h3>{this.props.title}<h3>;
+    return <h3>{this.props.title}<h3>
   }
 }
 ```
 
-Or passed as argument on functional component
+Accessing props in functional component
 
 ```jsx
-function MyComponent(props) {
-  return <h3>{props.title}<h3>;
+const Greeting = (props) => {
+  <h3>
+    {props.title}
+  <h3>
 }
 ```
 
 <!-- prettier-ignore -->
 ***
 
-### children prop
+## Props
 
-<!-- prettier-ignore -->
-```jsx
-function FancyButton(props) {
-  return (
-    <button className="FancyButton">
-      {props.children}
-    </button>
-  );
-}
-```
+Prefer to destructor your props
 
 ```jsx
-<FancyButton>Click Me</FancyButton>
-```
-
-<!-- prettier-ignore -->
-***
-
-### Props
-
-Props are Read-Only
-
-```jsx
-class MyComponent extends Component {
-  constructor(props) {
-    super(props);
-    // BAD: Error is thrown
-    props.title = `-- ${props.title} --`;
-  }
-}
-```
-
-<!-- prettier-ignore -->
-***
-
-### Props
-
-Validate your props
-
-```jsx
-import PropTypes from 'prop-types';
-
-class MyComponent extends Component {
-
-  static propTypes = {
-    title:PropTypes.string.isRequired,
-    count:PropTypes.number,
-  };
-  static defaultProps = {
-    count: 10
-  };
-
+class Greeting extends Component {
   render() {
-    return (
-	   <h3>{this.props.title}<h3>
-    );
+    const { title } = this.props;
+    return <h3>{title}<h3>
   }
 }
 ```
 
-[React prop-types](https://github.com/facebook/prop-types)
-
-<!-- prettier-ignore -->
-***
-
-### Props
-
-Validate functional components props
-
 ```jsx
-import PropTypes from 'prop-types';
-
-function MyComponent(props) {
-  return (
-    <h3>{this.props.title}<h3>
-  );
+const Greeting = ({title}) => {
+  <h3>
+    {title}
+  <h3>
 }
-
-MyComponent.propTypes = {
-  title: PropTypes.string.isRequired,
-  count: PropTypes.number,
-};
-
-MyComponent.defaultProps = {
-  count: 10
-};
 ```
-
-This syntax can also be used on class components
 
 <!-- prettier-ignore -->
 ***
@@ -992,148 +1048,38 @@ class MyComponent extends React {
 }
 ```
 
----
-
-# State & Live Cycle
-
-> It's not just a component
-
 <!-- prettier-ignore -->
 ***
 
-## Component State
+### Props as events to parent
 
 ```jsx
-export default class MyComponent extends Component {
-  state = {
-    counter: 0,
-  };
-  addOne = () => {
-    this.setState({
-      counter: this.state + 1,
-    });
-  };
+class App extends React {
   render() {
     return (
-      <div>
-        <h3>{this.state.counter}</h3>
-        <button onClick={this.addOne}>+</button>
-      </div>
-    );
-  }
-);
-```
-
-<!-- prettier-ignore -->
-***
-
-## Initialize State
-
-Init state by prop
-
-```jsx
-export default class MyComponent extends Component {
-  state = {
-    counter: this.props.initialValue || 0,
-  };
-  // ...
-}
-```
-
-Alternative via constructor
-
-```jsx
-export default class MyComponent extends Component {
-  constructor(props) {
-    super(props);
-    state = {
-      counter: props.initialValue || 0,
-    };
-  }
-  // ...
-}
-```
-
-<!-- prettier-ignore -->
-***
-
-## SetState
-
-```jsx
-// single value
-this.setState({
-  counter: 1,
-});
-
-// single update, complex state
-// set state will always set the complete state
-this.setState({
-  ...this.state    // take all other state properties
-  counter: 1,      // set counter to 1
-});
-
-// better: set by callback
-this.setState((state) => ({
-  ...state
-  counter: 1,
-}));
-```
-
-<!-- prettier-ignore -->
-***
-
-### SetState
-
-```js
-// Issue: state is asynchronous
-this.setState({
-  counter: this.state + 1,
-});
-console.log(this.state); // State may be not updated yet
-
-// Fix: result callback
-this.setState(
-    (state, props) => ({
-        ...state
-        counter: props.initialValue,
-    }),
-    (state) => {
-        // now the state is changed
-        consoler.log('new state: ', state)
-    }
-);
-```
-
-<!-- prettier-ignore -->
-***
-
-### Calculated state fields
-
-Don't use state for calculated fields
-
-```jsx
-export default class MyComponent extends Component {
-  constructor(props) {
-    this.state = {
-      fullName: `${props.firstName} ${props.lastName}`,
-    };
-  }
-  render() {
-    return <p>{this.state.fullName}</p>;
+      MyComponent onUpdate={handleUpdate} />
+    )
   }
 }
 ```
 
-Better
-
 ```jsx
-export default class MyComponent extends Component {
-  render() {
-    const fullName = `${this.props.firstName} ${this.props.lastName}`;
-    return <p>{fullName}</p>;
-  }
+const MyComponent = (props) => {
+    return (
+        <div>
+          <h1>{props.title}</h1>
+          <button onClick={props.onUpdate} />
+          <button onClick={() => props.onUpdate('hello')} />
+        </div>
+    )
 }
 ```
+
+---
+
+# Live Cycle
+
+> It's alive
 
 <!-- prettier-ignore -->
 ***
@@ -1168,6 +1114,29 @@ export default class MyComponent extends Component {
 <img src="./images/react-lifecycke.jpg" width="800px">
 
 [React lifecycle methods diagram](http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/)
+
+---
+
+# Exercise 3
+
+### Alert Component (Props)
+
+- Create alert component with [bootstrap styling](https://www.w3schools.com/bootstrap/bootstrap_alerts.asp)
+
+```
+<Alert>This is information message</Alert>
+<Alert type="danger">We have a problem</Alert>
+<Alert type="warning" onClosed={alertClosed}>
+    <strong>Warning!</strong> Better check yourself, you're not looking too good.
+</Alert>
+```
+
+<br>
+### Tips
+
+```
+// T.B.D
+```
 
 ---
 
@@ -1350,7 +1319,7 @@ custom config
 ```js
 // api.js
 import axios from 'axios';
-expost default axios.create({
+export default axios.create({
   baseURL: 'https://some-domain.com/api/',
   timeout: 1000,
   headers: { 'X-Custom-Header': 'foobar' },
@@ -1403,9 +1372,21 @@ export default class MyComponent extends Component {
 
 ---
 
-# Styling
+# Exercise
 
-> The building blocks of React
+### Web Shop
+
+- Show list of products (and there image)
+- Styling with bootstrap
+
+<br>
+### Tips
+
+```
+// API
+
+// T.B.D
+```
 
 ---
 
@@ -1435,37 +1416,6 @@ for example:
 ```js
 if (process.NODE_ENV === 'production') {
   // production mode
-}
-```
-
-<!-- prettier-ignore -->
-***
-
-## Console.log
-
-Don't allow console.log for Production!
-
-.eslintrc.js
-
-```js
-module.exports = {
-  // ...
-  rules: {
-    // only allowed in development
-    'no-console': process.env.NODE_ENV === 'production' ? 2 : 0,
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
-  },
-};
-```
-
-package.json
-
-```json
-{
-  "scripts": {
-    "lint": "eslint src/**/*.js",
-    "lint:prod": "cross-env NODE_ENV=production eslint src/**/*.js"
-  }
 }
 ```
 
@@ -1503,6 +1453,7 @@ Training
 - [REACT FOR BEGINNERS](https://reactforbeginners.com/)
   from @wesbos
 - [The Beginner’s Guide to React](https://egghead.io/courses/the-beginner-s-guide-to-react) from @kentcdodds
+- [React.js cheatsheet](https://devhints.io/react)
 
 Libraries
 

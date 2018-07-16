@@ -51,12 +51,14 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 
 # Agenda
 
-- [JavaScript Tooling and Editor](./javaScript-tooling-and-editor.md)
-- [Javascript Refresh](./javascript-refresh.md)
-- [React Introduction](./react-introduction.md)
-- [React Advanced](./react-advanced.md)
-- [React Forms](./react-forms.md)
-- [React State Management](./react-state-management.md)
+- JavaScript & Tooling
+    - [JavaScript Tooling and Editor](./javaScript-tooling-and-editor.md)
+    - [Javascript Refresh](./javascript-refresh.md)
+- React
+    - [React Introduction](./react-introduction.md)
+    - [React Patterns](./react-patterns.md)
+    - [React Forms](./react-forms.md)
+    - [React State Management](./react-state-management.md)
 
 ---
 

@@ -204,3 +204,5 @@ plugin-transform-async-to-generator
 ---
 
 ## Resources
+
+- http://www.palador.com/2017/09/19/creating-mobx-state-tree-store-react/
