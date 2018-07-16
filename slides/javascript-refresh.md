@@ -1,4 +1,11 @@
-# Know Your Javascript
+---
+title: JavaScript Refresh
+transition: 'fade'
+---
+
+
+# JavaScript Refresh
+#### All you need to know to build React apps
 <small>by Peter Cosemans</small>
 <br>
 <br>

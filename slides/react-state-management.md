@@ -8,7 +8,7 @@ verticalSeparator: "^\\*\\*\\*"
 
 ## State Management
 
-<img src="./images/state-management.png" width="600px" style: "{border: none}"/><br>
+<img src="./images/state-management.png" width="600px"/><br>
 
 <small>
 by Peter Cosemans<br>
@@ -202,6 +202,13 @@ https://github.com/mobxjs/babel-plugin-mobx-deep-action
 plugin-transform-async-to-generator
 
 ---
+
+# Resources
+
+> Get the extra information
+
+<!-- prettier-ignore -->
+***
 
 ## Resources
 

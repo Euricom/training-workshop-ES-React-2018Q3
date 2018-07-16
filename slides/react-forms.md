@@ -4,16 +4,15 @@ transition: 'fade'
 verticalSeparator: "^\\*\\*\\*"
 ---
 
-# React
+# React Forms
 
-## Introduction
-
-<img src="./images/react.png" width="300px" /><br>
+<img src="./images/forms.png" width="600px" /><br>
 
 <small>
 by Peter Cosemans<br>
 Copyright (c) 2018 Euricom nv.
 </small>
+
 
 <!-- markdownlint-disable -->
 <style type="text/css">
@@ -139,23 +138,36 @@ https://codesandbox.io/s/xl0867zzrp - full raw code
 
 # Resources
 
+> Get the extra information
+
+<!-- prettier-ignore -->
+***
+
+## Resources
+
 Training
 
-- [Building forms using React — everything you need to know](https://www.codementor.io/blizzerand/building-forms-using-react-everything-you-need-to-know-iz3eyoq4y)
+- [Building forms using React](https://www.codementor.io/blizzerand/building-forms-using-react-everything-you-need-to-know-iz3eyoq4y)
 
 Mobx
 
-- https://blog.risingstack.com/handling-react-forms-with-mobx-observables/
-- https://medium.com/@KozhukharenkoN/react-form-validation-with-mobx-8ce00233ae27
+- [Handling React Forms with Mobx Observables](https://blog.risingstack.com/handling-react-forms-with-mobx-observables/)
+- [React form validation with MobX](https://medium.com/@KozhukharenkoN/react-form-validation-with-mobx-8ce00233ae27)
+
+
+<!-- prettier-ignore -->
+***
+
+## Resources
 
 Formik
 
 - [Better React Forms with Formik](https://mead.io/formik/)
 - [The Joy of Forms with React and Formik](https://keyholesoftware.com/2017/10/23/the-joy-of-forms-with-react-and-formik/)
-- [formik vs informed vs react form vs react forms | npm trends](http://www.npmtrends.com/formik-vs-informed-vs-react-form-vs-react-forms)
+- [formik vs informed vs react form vs react forms](http://www.npmtrends.com/formik-vs-informed-vs-react-form-vs-react-forms)
 - [ReactNYC - Formik](https://www.youtube.com/watch?v=-tDy7ds0dag)
 
-Components
+Components/libraries
 
 - [React-Select](https://github.com/JedWatson/react-select)
 

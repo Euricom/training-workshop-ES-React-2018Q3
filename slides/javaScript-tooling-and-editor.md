@@ -3,7 +3,7 @@ title: JavaScript, Tooling and Editor
 transition: 'fade'
 ---
 
-# JavaScript Tooling and Editor
+## JavaScript Tooling and Editor
 
 <img src="./images/tooling.jpg" width="400px" /><br>
 <small>

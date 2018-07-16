@@ -1,5 +1,5 @@
 ---
-title: ES - React Workshop
+title: React Workshop
 transition: 'fade'
 ---
 
@@ -27,7 +27,7 @@ transition: 'fade'
 }
 </style>
 
-# ES - React Workshop
+# React Workshop
 
 <small>by Peter Cosemans</small>
 <br>

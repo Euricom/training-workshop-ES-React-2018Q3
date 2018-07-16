@@ -1,14 +1,12 @@
 ---
-title: React Introduction
+title: React Patterns
 transition: 'fade'
 verticalSeparator: "^\\*\\*\\*"
 ---
 
-# React
+# React Patterns
 
-## Introduction
-
-<img src="./images/react.png" width="300px" style: "{border: none}"/><br>
+<img src="./images/react-patterns.jpg" width="300px" /><br>
 
 <small>
 by Peter Cosemans<br>
@@ -503,12 +501,19 @@ ReactDOM.render(
 
 # Resources
 
-#### Info
+> Get the extra information
+
+<!-- prettier-ignore -->
+***
+
+## Resources
+
+Info
 
 - [Use a Render Prop!](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce)
 - [How to fetch data in React](https://www.robinwieruch.de/react-fetching-data/)
 
-#### Patterns
+Patterns
 
 - [Reusable Code Patterns](https://benmccormick.org/2016/01/08/reusable-code-patterns/)
 - [ReactJS: Code Reuse Patterns](https://www.youtube.com/watch?v=0BNgi9vofaw)
