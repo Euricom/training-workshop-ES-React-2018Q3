@@ -1448,21 +1448,34 @@ log.debug('details', result);
 
 # Resources
 
-Training
+#### Training
 
 - [REACT FOR BEGINNERS](https://reactforbeginners.com/)
   from @wesbos
 - [The Beginner’s Guide to React](https://egghead.io/courses/the-beginner-s-guide-to-react) from @kentcdodds
 - [React.js cheatsheet](https://devhints.io/react)
 
-Libraries
+#### Info
+
+- [8 no-Flux strategies for React component communication](https://www.javascriptstuff.com/component-communication/)
+- [Beware: React setState is asynchronous!](https://medium.com/@wereHamster/beware-react-setstate-is-asynchronous-ce87ef1a9cf3)
+
+<!-- prettier-ignore -->
+***
+
+## Resources
+
+#### Libraries
 
 - [React Helmet](https://github.com/nfl/react-helmet) - A document head manager
+- [React Toastify](https://github.com/fkhadra/react-toastify) - Allow you to add notification to your app
+- [Enzyme](https://github.com/airbnb/enzyme/) - JavaScript Testing utilities
+for React
+- [react virtualized](https://bvaughn.github.io/react-virtualized) - Data Grid
+- [Recat-bootstrap](https://github.com/react-bootstrap/react-bootstrap) - Bootstrap 3 components built with React
+- [Grommet](http://grommet.io/) - Design system for React
+- [MATERIAL-UI](https://material-ui.com/) - Google's Material Design in React
 
-Info
-
-- https://www.sitepoint.com/redux-vs-mobx-which-is-best/
-- [Beware: React setState is asynchronous!](https://medium.com/@wereHamster/beware-react-setstate-is-asynchronous-ce87ef1a9cf3)
 
 ---
 

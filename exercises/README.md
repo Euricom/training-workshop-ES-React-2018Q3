@@ -50,7 +50,7 @@
 ```
 <Alert>This is an information message</Alert>
 <Alert type="danger">We have a problem</Alert>
-<Alert type="warning" onClosed={alertClosed}>
+<Alert type="warning" onClose={closeAlert}>
     <strong>Warning!</strong> Better check yourself, you are not looking too good.
 </Alert>
 ```

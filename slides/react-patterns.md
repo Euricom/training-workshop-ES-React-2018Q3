@@ -503,12 +503,14 @@ ReactDOM.render(
 
 # Resources
 
+#### Info
 
 - [Use a Render Prop!](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce)
 - [How to fetch data in React](https://www.robinwieruch.de/react-fetching-data/)
 
-Patterns
+#### Patterns
 
 - [Reusable Code Patterns](https://benmccormick.org/2016/01/08/reusable-code-patterns/)
 - [ReactJS: Code Reuse Patterns](https://www.youtube.com/watch?v=0BNgi9vofaw)
 - [React Patterns in a Nutshell](https://www.youtube.com/watch?v=C6w7R501oug)
+- [Simple React Patterns](https://lucasmreis.github.io/blog/simple-react-patterns/)

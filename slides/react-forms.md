@@ -8,7 +8,7 @@ verticalSeparator: "^\\*\\*\\*"
 
 ## Introduction
 
-<img src="./images/react.png" width="300px" style: "{border: none}"/><br>
+<img src="./images/react.png" width="300px" /><br>
 
 <small>
 by Peter Cosemans<br>

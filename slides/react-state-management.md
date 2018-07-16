@@ -205,4 +205,5 @@ plugin-transform-async-to-generator
 
 ## Resources
 
-- http://www.palador.com/2017/09/19/creating-mobx-state-tree-store-react/
+- [Creating a Mobx-State-Tree Store in React](http://www.palador.com/2017/09/19/creating-mobx-state-tree-store-react/)
+- [Redux vs MobX: Which Is Best for Your Project?](https://www.sitepoint.com/redux-vs-mobx-which-is-best/)
