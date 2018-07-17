@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Products from './components/Products';
+import Products from './containers/ProductsContainer';
 
 class App extends Component {
   render() {
@@ -11,9 +11,6 @@ class App extends Component {
           <div className="col-md-8">
             <Products />
           </div>
-          {/* <div class="col-md-4">
-            <Basket></Basket>
-          </div> */}
         </div>
       </div>
     );

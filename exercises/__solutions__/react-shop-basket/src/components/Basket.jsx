@@ -1,69 +1,25 @@
 import React, { Component } from 'react';
-import eventBus from 'pubsub-js';
-
-import BasketModel from '../models/basketModel';
-import * as basketService from '../services/basketService';
-import * as productService from '../services/productService';
 import { toCurrency } from '../core/intl';
 
-class Basket extends Component {
-  state = {
-    basket: new BasketModel(),
-  };
-
-  async componentDidMount() {
-    const initialBasket = await basketService.get();
-
-    // get app products that are in the basket
-    const promises = [];
-    initialBasket.items.forEach(item => {
-      promises.push(productService.getById(item.id));
-    });
-    const products = await Promise.all(promises);
-
-    // map all products in the basket
-    products.forEach(product => {
-      initialBasket.updateProductInfo(product);
-    });
-
-    // set state
-    this.setState({ basket: initialBasket });
-
-    // subscribe to addProduct event
-    eventBus.subscribe('addProduct', (msg, data) => {
-      this.setState(state => {
-        state.basket.addProduct(data.product, data.quantity);
-        return state.basket;
-      });
-    });
-  }
-
+export default class BasketList extends Component {
   render() {
-    const { basket } = this.state;
-    if (basket.isEmpty()) {
-      return (
-        <div>
-          <h2>Basket</h2>
-          <span>No Product in Basket</span>
-        </div>
-      );
-    }
+    const { basket } = this.props;
     return (
       <div>
-        <h2>Basket</h2>
         <div>
-          <div>
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                {basket.items.map(item => (
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {basket &&
+                basket.items &&
+                basket.items.map(item => (
                   <tr key={item.id}>
                     <td>{item.title}</td>
                     <td>{toCurrency(item.price)}</td>
@@ -71,14 +27,11 @@ class Basket extends Component {
                     <td>{toCurrency(item.total)}</td>
                   </tr>
                 ))}
-              </tbody>
-            </table>
-            <h4>Total: {toCurrency(basket.totalPrice)}</h4>
-          </div>
+            </tbody>
+          </table>
+          <h4>Total: {toCurrency(basket.totalPrice)}</h4>
         </div>
       </div>
     );
   }
 }
-
-export default Basket;

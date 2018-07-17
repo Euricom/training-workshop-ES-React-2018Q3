@@ -36,11 +36,11 @@
     "html": ["htm", "html"]
   },
   "beautify.ignore": [
-      "**/*.js",
-      "**/*.ts",
-      "**/*.json",
-      "**/*.css",
-      "**/*.scss"
+    "**/*.js",
+    "**/*.ts",
+    "**/*.json",
+    "**/*.css",
+    "**/*.scss"
   ],
   "attrsSorter.order": [
     "id",
@@ -79,5 +79,6 @@
   ],
   "eslint.enable": true,
   "tslint.enable": false,
-  "tslint.autoFixOnSave": true
+  "tslint.autoFixOnSave": true,
+  "javascript.updateImportsOnFileMove.enabled": "prompt",
 }
