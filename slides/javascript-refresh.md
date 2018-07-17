@@ -374,6 +374,27 @@ getData(myConfig)
 <!-- prettier-ignore -->
 ***
 
+## Destructuring
+
+We can destruct nested objects
+
+```js
+const store = {
+  customer: { name: 'euricom', location: 'mechelen'},
+  pending: false,
+  addCustomer(arg) {
+    // ....
+  }
+};
+
+const { customer: { name }, addCustomer } = store;
+name === 'euricom'
+addCustomer(arg)
+```
+
+<!-- prettier-ignore -->
+***
+
 ## Decorators
 
 ```js
@@ -778,6 +799,62 @@ function* getCustomers() {
     }
 }
 ```
+
+---
+
+# Immutability
+
+> No Mutants Allowed
+
+<!-- prettier-ignore -->
+***
+
+## A pure function
+
+```js
+function sum(a, b) { return a + b }
+```
+
+An impure function
+
+```js
+const count = 1;
+function inc(v) { count += v; }
+```
+
+inc() is impure because it changes count outside its scope
+
+<!-- prettier-ignore -->
+***
+
+## A pure function
+
+A definition:
+
+- The function always returns the same result for the same arguments.
+- The function does not produce any observable side effects.
+
+Side Effects:
+
+- Making a HTTP request
+- Mutating data
+- DOM Query/Manipulation
+- Math.random()
+- Getting the current time
+
+<!-- prettier-ignore -->
+***
+
+## Immutable
+
+immutable change - don't change, create a new one
+
+```
+let a = 10;
+a = 12;         //
+```
+
+
 
 ---
 

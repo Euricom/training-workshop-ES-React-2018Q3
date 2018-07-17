@@ -26,8 +26,8 @@
 
 - [Intro](./slides/intro.md)
 - JavaScript & Tooling
-    - [JavaScript Tooling and Editor](./slides/javaScript-tooling-and-editor.md)
     - [Javascript Refresh](./slides/javascript-refresh.md)
+    - [JavaScript Tooling and Editor](./slides/javaScript-tooling-and-editor.md)
 - React
     - [React Introduction](./slides/react-introduction.md)
     - [React Patterns](./slides/react-patterns.md)

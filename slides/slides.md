@@ -52,8 +52,8 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 # Agenda
 
 - JavaScript & Tooling
-    - [JavaScript Tooling and Editor](./javaScript-tooling-and-editor.md)
     - [Javascript Refresh](./javascript-refresh.md)
+    - [JavaScript Tooling and Editor](./javaScript-tooling-and-editor.md)
 - React
     - [React Introduction](./react-introduction.md)
     - [React Patterns](./react-patterns.md)
@@ -82,11 +82,11 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 ## Prerequisites
 
 - Knowledge / Experience
-  - Javascript (jquery)
+  - Good knowledge of ES6
   - HTML / CSS / BootStrap
   - Chrome Dev Tools
 - System Setup
   - Visual Studio Code - https://code.visualstudio.com
-  - Node.js 9.3.0 - https://nodejs.org/en/
+  - Node.js 10.6 (or higher) - https://nodejs.org/en/
   - Git - https://git-scm.com/download/win
   - ConEmu: https://conemu.github.io/
