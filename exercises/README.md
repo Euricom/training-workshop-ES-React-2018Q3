@@ -32,7 +32,7 @@ if (data.length > 0) {
 }
 ```
 
-## Exercise - Functional programming
+## Exercise 2 - Functional programming
 
 Write a function that takes an argument and returns that argument.
 
@@ -72,7 +72,37 @@ add3(4)             // 7
 curry(mul, 5)(6)    // 30
 ```
 
-## Exercise 2 - User List (JSX)
+## Exercise 3 - Immutability
+
+Write a pure function to change the name of the customer
+
+```js
+let customer = { id: 1, name: 'euricom', location: 'Mechelen'};
+
+customer = updateCustomerName(customer, 'Euricom nv.');
+console.log(customer)
+```
+
+Write a pure function to add a customer
+
+```js
+let customers = { id: 1, name: 'euricom', location: 'Mechelen'};
+
+const newCustomer = { id: 2, name: 'consonto'};
+customers = addCustomer(customers, newCustomer);
+console.log(customer)
+```
+
+Write a pure function to change the name of 'euricom'
+
+```js
+let customers = [{ id: 1, name: 'euricom'}, { id: 2, name: 'consonto'}];
+
+customer = updateCustomerName(customers, 1, 'Euricom nv.');
+console.log(customers)
+```
+
+## Exercise 4 - User List (JSX)
 
 - Use raw JSX (no react)
 - Show list of users in table (Name, Email, Phone)
