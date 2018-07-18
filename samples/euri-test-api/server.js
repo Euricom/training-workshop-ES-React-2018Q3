@@ -353,8 +353,8 @@ function getOrCreateBasket(key) {
   if (!baskets[key]) {
     baskets[key] = [];
     basket = baskets[key];
-    basket.push({ id: 46, quantity: 1 });
-    basket.push({ id: 44, quantity: 4 });
+    basket.push({ id: 1, quantity: 1 });
+    basket.push({ id: 3, quantity: 4 });
   }
   return basket;
 }
@@ -454,11 +454,11 @@ app.delete('/api/basket/:key/reset', (req, res) => {
   const previosBasket = getOrCreateBasket(req.params.key);
   baskets[req.params.key] = []; // clear basket
   baskets[req.params.key].push({
-    id: 46,
+    id: 1,
     quantity: 1,
   });
   baskets[req.params.key].push({
-    id: 44,
+    id: 3,
     quantity: 4,
   });
   res.json(baskets[req.params.key]);
