@@ -2,12 +2,12 @@ import axios from 'axios';
 
 const instance = axios.create({
   timeout: 5000,
-  baseURL: 'https://euri-test-api-xupvkdbwnb.now.sh/api',
+  baseURL: 'https://euri-test-api.now.sh/api',
 });
 
 // Add a request log interceptor
 instance.interceptors.request.use(config => {
-  console.log('config', config.url);
+  console.log(config.method.toUpperCase(), config.url);
   return config;
 });
 

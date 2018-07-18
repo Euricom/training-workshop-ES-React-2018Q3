@@ -3,7 +3,7 @@ import eventBus from 'pubsub-js';
 import { RequestError, NoConnectionError } from '../core/errors';
 
 const instance = axios.create({
-  baseURL: 'https://euri-test-api-xupvkdbwnb.now.sh/api',
+  baseURL: 'https://euri-test-api.now.sh/api',
   // baseURL: 'http://localhost:3000/api',
   timeout: 5000,
 });

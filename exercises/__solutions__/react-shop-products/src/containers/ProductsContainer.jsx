@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import api from '../services/api';
+import api from '../api';
 import ProductList from '../components/ProductList';
 
 export default class ProductContainer extends Component {
