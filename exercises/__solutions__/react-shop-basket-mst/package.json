@@ -18,11 +18,14 @@
     "bootstrap": "3",
     "intl": "^1.2.5",
     "mobx": "^5.0.3",
-    "mobx-state-tree": "^2.2.0",
+    "mobx-react": "^5.2.3",
+    "mobx-state-tree": "^3.0.0",
+    "mst-middlewares": "^3.0.0",
     "prop-types": "^15.6.2",
     "pubsub-js": "^1.6.0",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react-dom": "^16.4.1",
+    "remotedev": "^0.2.7"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -44,6 +47,7 @@
     "jasmine-expect": "^3.8.3",
     "jest": "^23.1.0",
     "jest-watch-typeahead": "^0.1.0",
+    "mobx-wiretap": "^0.13.1",
     "prettier": "^1.6.1",
     "style-loader": "^0.21.0",
     "svg-react-loader": "^0.4.5",
