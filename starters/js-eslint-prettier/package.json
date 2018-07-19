@@ -1,0 +1,24 @@
+{
+  "name": "jsx-webpack",
+  "version": "1.0.0",
+  "description": "JSX WebPack Template",
+  "scripts": {
+    "serve": "live-server ./src",
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
+    "format": "prettier --write 'src/**/*.{js,jsx,css}'"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "live-server": "^1.2.0",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.10.0",
+    "prettier": "^1.6.1"
+  }
+}
