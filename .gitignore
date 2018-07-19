@@ -6,3 +6,7 @@ bundle
 
 samples/js-react-forms/\.vscode/chrome/
 samples/js-react-mst/\.vscode/chrome/
+
+samples/react-forms/\.vscode/chrome/
+
+samples/react-state-handling/react-form-mst/\.vscode/chrome/
