@@ -194,8 +194,7 @@ const createGreeting = function(message, name) {
     }
 }
 
-// Simplified multi line return
-
+// multi line return
 const createGreeting = (message, name) => ({
     message,
     name
@@ -479,14 +478,14 @@ Used by nodeJS
 myService.js
 
 ```js
-export const MAX_LENGTH = 1000;        // named const export
-export class Car() {                   // named class export
+export const MAX_LENGTH = 1000;  // named const export
+export class Car() {             // named class export
     ...
 }
 const config = {
     ...
 }
-export default config;                 // default (unnamed) export
+export default config;           // default (unnamed) export
 ```
 
 main.js
@@ -499,11 +498,6 @@ import * as lib from './service';           // import all
 console.log(lib.MAX_LENGTH)
 const car = new lib.Car();
 ```
-
-<!-- prettier-ignore -->
-***
-
-
 
 ---
 
@@ -520,7 +514,7 @@ Our array
 ```js
 const companies = [
   { id: 1, name: 'Acme', category: 'finance', employees: 5},
-  { id: 4, name: 'Globex', category: 'tech', employees: 1010},
+  { id: 4, name: 'Globe', category: 'tech', employees: 1010},
   { id: 2, name: 'Soylent', category: 'food', employees: 120}
 ]
 ```
@@ -534,7 +528,7 @@ Usefull Array functions
 
 ## Array - for loops
 
-Good old for loop
+Good old for loop (don't use it)
 
 ```js
 for (let i=0; i < companies.length; i++) {
@@ -585,7 +579,12 @@ const companyNames = companies.map(item => {
 const companyNames = companies.map(item => item.name)
 ```
 
-Other example
+<!-- prettier-ignore -->
+***
+
+## Array - for loops
+
+Other example (transform property)
 
 ```js
 const transformed = companies.map(item => {
@@ -622,21 +621,24 @@ const totEmployees = companies.reduce((acc, item) => {
 <!-- prettier-ignore -->
 ***
 
-## Array - Filter, Find and Sort
+### Array - Filter, Find and Sort
 
 ```js
 // filter
 const bigCompanies = companies.filter(item => {
   return item.employees > 1000;
 })
+
 // filter: short version
-const bigCompanies = companies.filter(item => item.employees > 1000)
+const bigCompanies = companies
+    .filter(item => item.employees > 1000)
 
 // find
 const acme = companies.find(item => item.name === 'Acme')
 
 // sort
-const sortedCompanies = companies.sort((a, b) => a.name > b.name)
+const sortedCompanies = companies
+    .sort((a, b) => a.name > b.name)
 ```
 
 <small>[JavaScript Higher Order Functions & Arrays Youtube](https://www.youtube.com/watch?time_continue=495&v=rRgD1yVwIvE)</small>
@@ -658,11 +660,11 @@ Add item to array
 
 ```js
 const name = 'Wolfoods';
-const newId = companies.reduce((acc, item) => Math.max(acc, item.id), 0) + 1;
+const newId = companies
+    .reduce((acc, item) => Math.max(acc, item.id), 0) + 1;
 companies.push({
   id: newId,
   name
-  category: 'science'
 })
 ```
 
@@ -678,7 +680,7 @@ const idToRemove = 999;
 companies = companies.filter(item => item.id === idToRemove)
 ```
 
-Update an item
+Find and update an item
 
 ```js
 const company = companies.find(item => item.id === 1)
@@ -694,7 +696,7 @@ company.name = 'Other name'
 <!-- prettier-ignore -->
 ***
 
-## Promises
+### Promises
 
 Making async methods calls via promise
 
@@ -715,7 +717,7 @@ You can chain multiple async methods
 myAsyncAction(arg)
   .then(result => {
     // step 2
-    return myOtherAction(result.name);  // also returns an promise
+    return myOtherAction(result.name);  // returns a promise
   })
   .catch(err => {
     // common error handling
@@ -725,7 +727,7 @@ myAsyncAction(arg)
 <!-- prettier-ignore -->
 ***
 
-## Promises
+### Promises
 
 Wait for multiple promises
 
@@ -829,12 +831,10 @@ inc() is impure because it changes count outside its scope
 
 ## A pure function
 
-A definition:
-
 - The function always returns the same result for the same arguments.
-- The function does not produce any observable side effects.
+- The function does NOT produce any observable side effects.
 
-Side Effects:
+What are side effects:
 
 - Making a HTTP request
 - Mutating data
@@ -847,14 +847,116 @@ Side Effects:
 
 ## Immutable
 
-immutable change - don't change, create a new one
+Immutable change - don't change, create a new one
 
 ```
-let a = 10;
-a = 12;         //
+let number = 10;
+let obj = { name: 'peter' };
+const refObj = obj;
+
+// don't change, replace
+number = 12;
+obj = { name: 'john' }
 ```
 
+<!-- prettier-ignore -->
+***
 
+## Immutable
+
+With objects
+
+```js
+// copy object and update
+obj = {
+  name: obj.name,
+  id: 12
+}
+
+// using Object.assign
+obj = Object.assign(obj, {
+  id: 12
+})
+
+// using ES6 spread operator
+obj = {
+  ...obj,
+  id: 12
+})
+```
+
+<!-- prettier-ignore -->
+***
+
+### Pure function
+
+A pure function with immutable change
+
+```js
+const obj = { name: 'john' };
+
+// BAD
+function updatedName(obj, newName) {
+    obj.name = newName;
+    return obj;
+}
+
+// GOOD
+function updatedName(obj, name) {
+    // for a pure function never change
+    // the input arguments
+    return {
+        ...obj,    // spread operator is your friend
+        name
+    }
+}
+
+const updatedObj = updatedName(obj, 'peter');
+```
+
+<!-- prettier-ignore -->
+***
+
+## Immutable changes
+
+```js
+// object
+const obj = { name: 'bob'};
+const newObj = { ...obj, name: 'peter' }
+
+// array push
+const array = [1, 2, 3];
+const newArray = [ ...array, 12];  // [1, 2, 3, 4]
+
+// array remove by id
+const array = [{id: 1, name: 'bob'}, {id: 2, name: 'peter'}];
+const newArray = array.filter(item => item.id != 1);
+```
+
+<!-- prettier-ignore -->
+***
+
+## Immutable changes
+
+```js
+// array remove index (start, deleteCount)
+const array = [1, 2, 3, 4];
+const newArray = [
+    ...arr.slice(0, start),
+    ...arr.slice(start + deleteCount)
+]
+
+// array change entry
+const newArray = array.map(item => {
+    if (item.id === 2) {
+        return { ...item, name: Peter }
+    }
+    return item
+});
+
+// array sort
+const newArray = [ ...arr ].sort(compareFunction)
+```
 
 ---
 

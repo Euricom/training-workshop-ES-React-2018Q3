@@ -52,8 +52,8 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 # Agenda
 
 - JavaScript & Tooling
-    - [Javascript Refresh](./javascript-refresh.md)
     - [JavaScript Tooling and Editor](./javaScript-tooling-and-editor.md)
+    - [Javascript Refresh](./javascript-refresh.md)
 - React
     - [React Introduction](./react-introduction.md)
     - [React Patterns](./react-patterns.md)

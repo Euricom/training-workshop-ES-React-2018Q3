@@ -41,7 +41,7 @@ Copyright (c) 2017-2018 Euricom nv.
 
 ---
 
-# It's not your daddies JavaScript anymore
+# It's not your old JavaScript anymore
 
 > Tooling will help us
 
@@ -400,7 +400,7 @@ Sample Code
 const a = { name: 'peter'}
 const b = {
     ...a,
-    localtion: 'lint'
+    location: 'Lint'
 }
 console.log(b)
 ```
@@ -536,11 +536,7 @@ Available to JavaScript (ESLint), TypeScript (TSLint) and CSS (StyleLint)
 
 ## IDE/Editor Support
 
-Any good JS editor support's linting
-
-* Visual Studio Code
-* WebStorm
-* Atom
+Any good JS editor support's linting: Visual Studio Code, WebStorm, Atom, ...
 
 <img src="./images/linting-vscode.png" width="800px" /><br>
 
@@ -630,8 +626,10 @@ No more linting errors for formatting.
 Pre-defined projects for easy startup. Where to find?
 
 ```
+<root>/starter/js-eslint-prettier
+<root>/starter/jsx-webpack
 <root>/starter/js-react-webpack
-<root>/starter/js-react-webpack-full
+<root>/starter/js-react-cra-prettier
 ```
 
 Ready to:
