@@ -59,7 +59,7 @@ Write a function (applyf) that takes a function (like add or mul), and makes it 
 function add(x, y) { return x + y }
 function mul(x, y) { return x * y }
 
-addf = applyf(add);
+const addf = applyf(add);
 addf(3)(4)           // 7
 applyf(mul)(5)(6)    // 30
 ```
@@ -67,7 +67,7 @@ applyf(mul)(5)(6)    // 30
 Write a function (curry) that takes a function and an argument, and returns a function that can supply a second argument.
 
 ```js
-add3 = curry(add, 3);
+const add3 = curry(add, 3);
 add3(4)             // 7
 curry(mul, 5)(6)    // 30
 ```
@@ -83,20 +83,26 @@ customer = updateCustomerName(customer, 'Euricom nv.');
 console.log(customer)
 ```
 
-Write a pure function to add a customer
+Write a pure function to add a customer. Optional create a new sequencial id.
 
 ```js
-let customers = { id: 1, name: 'euricom', location: 'Mechelen'};
+let customers = [
+    { id: 1, name: 'euricom'},
+    { id: 2, name: 'alasca'}
+];
 
-const newCustomer = { id: 2, name: 'consonto'};
+const newCustomer = { name: 'consonto'};
 customers = addCustomer(customers, newCustomer);
-console.log(customer)
+console.log(customers)
 ```
 
-Write a pure function to change the name of 'euricom'
+Write a pure function to change the name of 'euricom'. Tip: You need to create an new array and modify (immutable) the customer that changes.
 
 ```js
-let customers = [{ id: 1, name: 'euricom'}, { id: 2, name: 'consonto'}];
+let customers = [
+    { id: 1, name: 'euricom'},
+    { id: 2, name: 'alasca'}
+];
 
 customer = updateCustomerName(customers, 1, 'Euricom nv.');
 console.log(customers)
@@ -127,7 +133,7 @@ console.log(customers)
 ```
 
 
-## Exercise 3 - Toggle Text (Component State & Event)
+## Exercise 5 - Toggle Text (Component State & Event)
 
 - App Component
 - Toggle visibility of some text with a button
@@ -145,7 +151,7 @@ console.log(customers)
 <button>Toggle Text</button>
 ```
 
-## Exercise 4 - Alert Component (Props)
+## Exercise 6 - Alert Component (Props)
 
 - Create alert component with [bootstrap styling](https://getbootstrap.com/docs/3.3/components/#alerts)
 
@@ -157,11 +163,11 @@ console.log(customers)
 </Alert>
 ```
 
-## Exercise 5 - Shop Product List
+## Exercise 7 - Shop Product List
 
 - Create app to show products grid
 - Load products from API
-  [euri-test-api](https://euri-test-api-xupvkdbwnb.now.sh)
+  [euri-test-api](https://euri-test-api.now.sh)
 - Show following fields
     + Image
     + Sku
@@ -173,15 +179,31 @@ console.log(customers)
 - Optional: add an error message when the communication fails
 - Optional: load more products when scrolling down, use [react-infinite-scroller](https://cassetterocks.github.io/react-infinite-scroller/demo/)
 
-## Exercise 6 - ErrorBoundery
+## Exercise 8 - Shop ErrorBoundery
 
-- Add error bounderies to your application
+- Add error bounderies to your application Shop
+
+## Exercise 9 - Render Props
+
+- Write a counter logic components. Every time you click on it the counter increments. The couter state must be passed over the render prop.
+
+```jsx
+const App = () => (
+  <Counter>
+    {state => (
+      <div>
+        <h1>The count is: {state.count}</h1>
+      </div>
+    )}
+  </Counter>
+);
+```
 
 ## Exercise 7 - Shop Basket
 
 - Add a shopping basket
 - Allow products to put in basket (add to basket button)
-- Use basket API from [euri-test-api](https://euri-test-api-xupvkdbwnb.now.sh)
+- Use basket API from [euri-test-api](https://euri-test-api.now.sh)
 - Show following fields in basket
     + Product name & price
     + Quantity

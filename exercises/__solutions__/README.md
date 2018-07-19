@@ -132,7 +132,7 @@ Write a function (applyf) that takes a function (like add or mul), and makes it 
 function add(x, y) { return x + y }
 function mul(x, y) { return x * y }
 
-addf = applyf(add);
+const addf = applyf(add);
 addf(3)(4)           // 7
 applyf(mul)(5)(6)    // 30
 
@@ -156,7 +156,7 @@ function applyf(fn) {
 Write a function (curry) that takes a function and an argument, and returns a function that can supply a second argument.
 
 ```js
-add3 = curry(add, 3);
+const add3 = curry(add, 3);
 add3(4)             // 7
 curry(mul, 5)(6)    // 30
 
@@ -203,14 +203,17 @@ function updateCustomerName(customer, newName) {
 }
 ```
 
-Write a pure function to add a customer
+Write a pure function to add a customer. Optional create a new sequencial id.
 
 ```js
-let customers = { id: 1, name: 'euricom', location: 'Mechelen'};
+let customers = [
+    { id: 1, name: 'euricom'},
+    { id: 2, name: 'alasca'}
+];
 
-const newCustomer = { id: 2, name: 'consonto'};
+const newCustomer = { name: 'consonto'};
 customers = addCustomer(customers, newCustomer);
-console.log(customer)
+console.log(customers)
 
 
 
@@ -222,15 +225,21 @@ console.log(customer)
 function addCustomer(customers, newCustomer) {
     return [
         ...customers,
-        newCustomer
+        {
+            ...newCustomer,
+            id: customers.reduce((acc, item) => Math.max(acc, item.id), 0) + 1
+        }
     ]
 }
 ```
 
-Write a pure function to change the name of 'euricom'
+Write a pure function to change the name of 'euricom'. Tip: You need to create an new array and modify (immutable) the customer that changes.
 
 ```js
-let customers = [{ id: 1, name: 'euricom'}, { id: 2, name: 'consonto'}];
+let customers = [
+    { id: 1, name: 'euricom'},
+    { id: 2, name: 'alasca'}
+];
 
 customer = updateCustomerName(customers, 1, 'Euricom nv.');
 console.log(customers)
@@ -242,17 +251,77 @@ console.log(customers)
 
 
 // solution
-function updateCustomerName(customers, id, newName) {
+function updateCustomerName(customers, id, name) {
     return customers.map(customer => {
         if (customer.id !== id) {
             return customer;
         }
-        else {
-            return {
-                ...customer,
-                name: newName
-            }
+        return {
+            ...customer,
+            name
         }
     })
 }
 ```
+
+## Exercise 4 - User List (JSX)
+
+See 'react-alert'
+
+## Exercise 5 - Toggle Text (Component State & Event)
+
+See 'react-alert'
+
+## Exercise 6 - Alert Component (Props)
+
+See 'react-alert'
+
+## Exercise 7 - Shop Product List
+
+See 'react-shop-products'
+
+## Exercise 8 - Shop ErrorBoundery
+
+See 'react-shop-products'
+
+## Exercise 9 - Render Props
+
+- Write a counter logic components. Every time you click on it the counter increments. The couter state is passed as a render prop.
+
+```jsx
+const App = () => (
+  <Counter>
+    {state => (
+      <div>
+        <h1>The count is: {state.count}</h1>
+      </div>
+    )}
+  </Counter>
+);
+
+
+// solution
+class Counter extends Component {
+    state: {
+        couter: 0
+    }
+
+    increment = () => {
+        this.setState(prevState => {
+            return {
+                count: prevState.count + 1,
+            };
+        });
+    };
+
+    render() {
+        return (
+            <div onClick={this.increment}>
+                {this.props.children(this.state)}
+            </div>
+        );
+    }
+}
+```
+
+

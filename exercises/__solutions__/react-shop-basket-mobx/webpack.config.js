@@ -10,6 +10,7 @@ module.exports = {
     path: path.join(__dirname, 'bundle'),
     publicPath: '/bundle/',
   },
+  devtool: 'source-maps',
   module: {
     rules: [
       {

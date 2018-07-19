@@ -4,7 +4,7 @@ import { Subscribe } from 'unstated';
 import Basket from '../components/Basket';
 import AppStore from '../store';
 
-function getBasketWithProducts(basketItems, products) {
+const getBasketWithProducts = (basketItems, products) => {
   const basket = {
     items: basketItems.map(basketItem => {
       const product = products.find(p => p.id === basketItem.id);
@@ -21,7 +21,7 @@ function getBasketWithProducts(basketItems, products) {
   };
   basket.totalPrice = basket.items.reduce((acc, item) => acc + (item.total || 0), 0);
   return basket;
-}
+};
 
 export default class BasketContainer extends Component {
   render() {
