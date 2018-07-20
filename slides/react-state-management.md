@@ -57,7 +57,7 @@ Copyright (c) 2018 Euricom nv.
 <!-- prettier-ignore -->
 ***
 
-## MVC
+## MVC / MVP
 
 <img src="./images/mvc.png" width="800px">
 
@@ -85,16 +85,23 @@ Copyright (c) 2018 Euricom nv.
 <!-- prettier-ignore -->
 ***
 
-### Redux
+### With global store
 
-<img src="./images/redux.png">
+<img src="./images/with-redux.png" width="600px">
 
 <!-- prettier-ignore -->
 ***
 
-### With redux
+### Flux/redux pattern
 
-<img src="./images/with-redux.png" width="600px">
+<img src="./images/flux-redux.png">
+
+<!-- prettier-ignore -->
+***
+
+### Redux
+
+<img src="./images/redux.png">
 
 <!-- prettier-ignore -->
 ***
