@@ -1,6 +1,7 @@
 ---
 title: JavaScript, Tooling and Editor
 transition: 'fade'
+verticalSeparator: "^\\*\\*\\*"
 ---
 
 ## JavaScript Tooling and Editor
@@ -45,16 +46,17 @@ Copyright (c) 2017-2018 Euricom nv.
 
 > Tooling will help us
 
-----
+<!-- prettier-ignore -->
+***
 
 ## Tooling
 
-- ***NodeJS*** - Cross-platform JavaScript runtime environment.
-- ***Npm*** - JavaScript module package manager
-- ***Babel*** - ES6+ to JavaScript transpiler
-- ***Prettier*** - An opinionated code formatter
-- ***Linting*** - Analyse your code for potential errors
-- ***WebPack*** - Task runner and module bundler.
+- **_NodeJS_** - Cross-platform JavaScript runtime environment.
+- **_Npm_** - JavaScript module package manager
+- **_WebPack_** - Task runner and module bundler.
+- **_Babel_** - ES6+ to JavaScript transpiler
+- **_Prettier_** - An opinionated code formatter
+- **_Linting_** - Analyse your code for potential errors
 
 ---
 
@@ -68,7 +70,8 @@ Git is used everywhere
 - All npm modules are stored on github
 - All content of this workshop :)
 
-----
+<!-- prettier-ignore -->
+***
 
 # GIT
 
@@ -88,7 +91,8 @@ cd training-workshop-ES-React-2018Q3
 git pull
 ```
 
-----
+<!-- prettier-ignore -->
+***
 
 # GIT
 
@@ -103,7 +107,8 @@ git pull
 
 > The text format for developers
 
-----
+<!-- prettier-ignore -->
+***
 
 ## Markdown
 
@@ -111,31 +116,32 @@ All slides and documentation is in markdown
 
 ```markdown
 # Header 1
+
 ## Header 2
 
 Unordered
 
-+ Create a list by starting a line with `+`, `-`, or `*`
-+ Sub-lists are made by indenting 2 spaces
+- Create a list by starting a line with `+`, `-`, or `*`
+- Sub-lists are made by indenting 2 spaces
 
 Ordered
 
-1. Lorem ipsum dolor sit amet
-2. Consectetur adipiscing elit
-3. Integer molestie lorem at massa
-
+1.  Lorem ipsum dolor sit amet
+2.  Consectetur adipiscing elit
+3.  Integer molestie lorem at massa
 ```
 
 See Also [here](https://guides.github.com/features/mastering-markdown/) and [here](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
 
-----
+<!-- prettier-ignore -->
+***
 
 # Markdown
 
 Tools
 
 - [VSCode](https://code.visualstudio.com/)
-- http://markdownpad.com
+- http://markdownpad.com (win)
 - https://caret.io/
 
 Online Tools
@@ -149,7 +155,8 @@ Online Tools
 
 > Your Javascript engine for the desktop
 
-----
+<!-- prettier-ignore -->
+***
 
 ## NodeJS - Active LTS or Current
 
@@ -160,31 +167,11 @@ To Install
 
 [https://github.com/nodejs/Release#release-schedule](https://github.com/nodejs/Release#release-schedule)
 
-----
-
-### Multiple node versions
-
-MacOS
-
-    // install
-    $ npm install n -g
-
-    // use
-    $ n latest
-    $ n
-
-Windows / MacOS
-
-[https://github.com/coreybutler/nvm-windows/releases](https://github.com/coreybutler/nvm-windows/releases)
-
-    // use
-    $ nvm list available
-    $ nvm install 4.4.5
-    $ nvm use 4.4.5
-
-----
+<!-- prettier-ignore -->
+***
 
 ## NPM
+
 ### Node Package Manager
 
 The JavaScript way of packaging and deploying code (modules)
@@ -207,7 +194,8 @@ $ npm install
 $ npm uninstall jquery --save
 ```
 
-----
+<!-- prettier-ignore -->
+***
 
 ## Npm Commands
 
@@ -223,7 +211,8 @@ npm config list                 # show configs
 npm install -g npm@latest       # upgrade npm to latest version
 ```
 
-----
+<!-- prettier-ignore -->
+***
 
 ## Npm Config
 
@@ -244,7 +233,8 @@ $ npm config get userconfig
 $ npm config get globalconfig
 ```
 
-----
+<!-- prettier-ignore -->
+***
 
 ## Npm Registry
 
@@ -270,7 +260,8 @@ npm install <git:// url>
 npm install <github username>/<github project>
 ```
 
-----
+<!-- prettier-ignore -->
+***
 
 ## Npm scripts
 
@@ -295,7 +286,8 @@ my-project@1.0.0 start /Users/my-user/git/my-project
 > node main.js
 ```
 
-----
+<!-- prettier-ignore -->
+***
 
 ## Npx
 
@@ -314,7 +306,8 @@ npx https://gist.github.com/zkat/4bc19503fe9e9309e2bfaa2c58074d32
 
 > Now you don't have to install tools globally or create a script line.
 
-----
+<!-- prettier-ignore -->
+***
 
 ## Yarn
 
@@ -342,11 +335,89 @@ $ yarn upgrade-interactive      # interactive upgrade all modules
 
 ---
 
+## WebPack
+
+[WebPack](https://webpack.js.org/) a modern bundler (compile and) for javascript.
+
+```bash
+yarn add webpack webpack-cli --dev
+```
+
+webpack.config.js
+
+```js
+module.exports = {
+  entry: './src/index.js',
+  mode: 'development',
+  devtool: 'source-maps',
+  output: { path: __dirname, filename: 'bundle.js' },
+};
+```
+
+Run
+
+```bash
+# development build
+npx webpack
+
+# production build
+npx webpack --mode production
+```
+
+<!-- prettier-ignore -->
+***
+
+## WebPack
+
+Add the bundle to html files
+
+```html
+<body>
+  <div id="root"></div>
+  <script src="bundle.js"></script>
+</body>
+```
+
+<!-- prettier-ignore -->
+***
+
+## WebPack-dev-server
+
+An development web server that bundle automatically.
+
+install
+
+```bash
+yarn add webpack-dev-server --dev
+```
+
+run
+
+```bash
+# startup
+npx webpack-dev-serve
+```
+
+Add npm scripts
+
+```json
+{
+  "scripts": {
+    "serve": "webpack",
+    "build": "webpack",
+    "build:prod": "webpack --mode production"
+  }
+}
+```
+
+---
+
 # Babel
 
 > Use the latest and greatest of ESNext
 
-----
+<!-- prettier-ignore -->
+***
 
 ## Setup
 
@@ -357,87 +428,39 @@ Install
 ```bash
 # install as npm module
 yarn add babel-cli --dev
-yarn add babel-preset-env babel-preset-react --dev
-yarn add babel-preset-stage-2 --dev
+yarn add babel-preset-env babel-preset-stage-2 --dev
 ```
 
 Configure: .babelrc
 
 ```json
 {
-  "presets": [
-    "env",        // which browser to support
-    "react"       // handles jsx and flow support
-    "stage-2"     // latest ES+ features
-  ]
+  "presets": ["env", "stage-2"]
 }
 ```
 
-----
+Babel needs preset to know how to build.
 
-## Customize
+See [babel-preset-env](https://github.com/babel/babel-preset-env) for more information
 
-.babelrc
+<!-- prettier-ignore -->
+***
 
-```json
-{
-  "presets": [
-    ["env", { "targets": { "browsers": ["last 2 versions"] } }],
-    "react"
-  ]
-}
+## Add to webpack
+
+```bash
+# install as npm module
+yarn add babel-loader --dev
 ```
-
-Babel will transpile to JavaScript that runs on the last two version of all the browsers.
-
-----
-
-## Test your Setup
-
-Sample Code
 
 ```js
-const a = { name: 'peter'}
-const b = {
-    ...a,
-    location: 'Lint'
-}
-console.log(b)
-```
-
-To build
-
-```bash
-npx babel main.js
-```
-
-To run
-
-```bash
-npx babel-node main.js
-```
-
-----
-
-## WebPack
-
-For the browser we need to compile and bundle the javascript.
-
-```bash
-yarn add webpack webpack-cli babel-loader --dev
-```
-
-webpack.config.js
-
-```js
+// update webpack.config.js
 module.exports = {
-  entry: './main.js',
-  mode: 'development',
-  output: { path: __dirname, filename: 'bundle.js' },
+  // ...
   module: {
     rules: [
       {
-        test: /.{js,jsx}?$/,
+        test: /\.(js|jsx)$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
@@ -446,19 +469,16 @@ module.exports = {
 };
 ```
 
-Build and bundle
-
-```bash
-npx webpack
-```
+Enjoy the latest ES7+ features :)
 
 ---
 
-# Formatting
+# Auto Format
 
-> Always us a code formatter
+> Always use a code formatter
 
-----
+<!-- prettier-ignore -->
+***
 
 ## Prettier
 
@@ -466,7 +486,11 @@ Use [https://prettier.io/](Prettier) to format your code.
 
 ```js
 // Input
-foo(reallyLongArg(),omgSoManyParameters(), IShouldRefactorThis(), isThereSeriouslyAnotherOne()
+foo(
+  reallyLongArg(),
+  omgSoManyParameters(),
+  IShouldRefactorThis(),
+  isThereSeriouslyAnotherOne()
 );
 ```
 
@@ -480,7 +504,8 @@ foo(
 );
 ```
 
-----
+<!-- prettier-ignore -->
+***
 
 ## VSCode - Plugin
 
@@ -490,11 +515,18 @@ Install VSCode plugin<br>
 
 [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
-----
+VSCode Setting
+
+```
+"editor.formatOnSave": true,
+```
+
+<!-- prettier-ignore -->
+***
 
 ## Config
 
-Config file: ```.prettierrc```
+Config file: `.prettierrc`
 
 ```
 {
@@ -505,16 +537,15 @@ Config file: ```.prettierrc```
   "useTabs": false,
   "semi": true
 }
-
 ```
 
-Ignore file: ```.prettierignore```
+script
 
 ```
-package.json
-node_modules/**/*
+scripts: {
+    "format": "prettier --write 'src/**/*.js'"
+}
 ```
-
 
 ---
 
@@ -522,7 +553,8 @@ node_modules/**/*
 
 > Don't start without it.
 
-----
+<!-- prettier-ignore -->
+***
 
 ## Use a linter
 
@@ -532,7 +564,8 @@ Static code analyses to improve your code.
 
 Available to JavaScript (ESLint), TypeScript (TSLint) and CSS (StyleLint)
 
-----
+<!-- prettier-ignore -->
+***
 
 ## IDE/Editor Support
 
@@ -540,13 +573,15 @@ Any good JS editor support's linting: Visual Studio Code, WebStorm, Atom, ...
 
 <img src="./images/linting-vscode.png" width="800px" /><br>
 
-----
+<!-- prettier-ignore -->
+***
 
-# ESLint
+## ESLint
 
 > The pluggable linting utility for JavaScript and JSX
 
-----
+<!-- prettier-ignore -->
+***
 
 ## ESLint - Setup
 
@@ -569,24 +604,24 @@ yarn add eslint-plugin-jsx-a11y eslint-plugin-import  --dev
     "node": true
   },
   "rules": {
-    "strict": [0],        // use strict is required for commonjs
-    "no-console": [0, ""] // allow console.log
+    "strict": [0],
+    "no-console": [0, ""]
   }
 }
-
 ```
 
 Add npm script
 
 ```json
 scripts: {
-    "lint": "eslint \"**/*.js\""
+    "lint": "eslint \"./src/**/*.js\""
 }
 ```
 
 <small>This setup follow the airbnb styleguide: https://github.com/zalmoxisus/javascript</small>
 
-----
+<!-- prettier-ignore -->
+***
 
 ## ESlint - VSCode
 
@@ -594,7 +629,8 @@ scripts: {
 
 [ESLint Plugin](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
 
-----
+<!-- prettier-ignore -->
+***
 
 ### ESLint - Disable styling rules
 
@@ -634,11 +670,11 @@ Pre-defined projects for easy startup. Where to find?
 
 Ready to:
 
-* Run any React/ES6+ in browser
-* Prettier setup
-* Linting with AirBnb config
-* Editorconfig for consistent tabs/spacing
-* Usefull VSCode setup
+- Run any React/ES6+ in browser
+- Prettier setup
+- Linting with AirBnb config
+- Editorconfig for consistent tabs/spacing
+- Usefull VSCode setup
 
 ---
 
