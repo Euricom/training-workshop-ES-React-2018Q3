@@ -50,16 +50,310 @@ Copyright (c) 2018 Euricom nv.
 
 ---
 
-## MobX
+## State Patterns
 
-<img src="./images/react-mobx.png">
-
-https://mobx.js.org/
+> State management is hard
 
 <!-- prettier-ignore -->
 ***
 
-## Setup
+## MVC
+
+<img src="./images/mvc.png" width="800px">
+
+<!-- prettier-ignore -->
+***
+
+### More MVC
+
+<img src="./images/mvc1.png">
+
+<!-- prettier-ignore -->
+***
+
+### MVC in reality
+
+<img src="./images/mvc2.png">
+
+<!-- prettier-ignore -->
+***
+
+### Component Composition
+
+<img src="./images/without-redux.png" width="600px">
+
+<!-- prettier-ignore -->
+***
+
+### Redux
+
+<img src="./images/redux.png">
+
+<!-- prettier-ignore -->
+***
+
+### With redux
+
+<img src="./images/with-redux.png" width="600px">
+
+<!-- prettier-ignore -->
+***
+
+### mobx
+
+<img src="./images/mobx.png" width="1000px">
+
+---
+
+## State in react
+
+> Where to keep the data
+
+<!-- prettier-ignore -->
+***
+
+### State in react
+
+<img src="./images/react-state.png" width="800px">
+
+<!-- prettier-ignore -->
+***
+
+### State in react
+
+<img src="./images/react-state-redux.png" width="700px">
+
+<!-- prettier-ignore -->
+***
+
+### Overview
+
+| Type      | Use                 | Library                                                                                     |
+| --------- | :------------------ | :------------------------------------------------------------------------------------------ |
+| Component | simple state        | react                                                                                       |
+| Relative  | component tree      | react                                                                                       |
+| Provider  | complex tree        | react, [unstated](https://goo.gl/xFvwUE), [react-waterfall](https://goo.gl/LdnCZ3)          |
+| Global    | simple interaction  | [mobx](http://mobx.js.org)                                                                  |
+| Global    | complex interaction | [redux](https://redux.js.org), [mobx-state-tree](https://github.com/mobxjs/mobx-state-tree) |
+
+---
+
+## Local state
+
+> Local state is fine.
+
+<!-- prettier-ignore -->
+***
+
+## Local state
+
+```js
+import React, { Component } from 'react';
+
+class Counter extends Component {
+  state = { value: 0 };
+
+  increment = () => {
+    this.setState(prevState => ({
+      value: prevState.value + 1,
+    }));
+  };
+
+  render() {
+    return (
+      <div>
+        {this.state.value}
+        <button onClick={this.increment}>+</button>
+      </div>
+    );
+  }
+}
+```
+
+<!-- prettier-ignore -->
+***
+
+## Container state
+
+```js
+import React, { Component } from 'react';
+
+class ProductsContainer extends Component {
+  state: {
+      products = [];
+  }
+
+  async componentDidMount() {
+    const products = await api.getProducts();
+    this.setState({
+      products,
+    });
+  }
+
+  render() {
+    // the actual rendering is done in another component
+    return <ProductList products={this.state.products}
+                        onDelete={this.handleDelete} />;
+  }
+}
+```
+
+---
+
+## Global state
+
+> When you want to share state
+
+<!-- prettier-ignore -->
+***
+
+## Redux
+
+State & Reducers
+
+```js
+// state
+const initialState = {
+  counter: 10,
+};
+
+// reducers
+const counter = (state = initialState, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { counter: state.counter + 1 };
+    case 'DECREMENT':
+      return { counter: state.counter - 1 };
+    default:
+      return state;
+  }
+};
+```
+
+<!-- prettier-ignore -->
+***
+
+### Redux
+
+Actions
+
+```js
+// action types
+export const INCREMENT = 'INCREMENT';
+export const DECREMENT = 'DECREMENT';
+
+// actions
+export const increment = () => ({
+  type: INCREMENT,
+});
+
+export const decrement = () => ({
+  type: INCREMENT,
+});
+```
+
+<!-- prettier-ignore -->
+***
+
+### Redux
+
+Container
+
+<!-- prettier-ignore -->
+```js
+class Counter extends Component {
+  render() {
+    return (
+      <div>
+        {this.props.counter}
+        <button onClick={this.props.actions.increment}>
+            Inc
+        </button>
+      </div>
+    );
+  }
+}
+
+export default connect(mapStateToProps,
+                       mapDispatchToProps)(Counter);
+```
+
+<!-- prettier-ignore -->
+***
+
+### Redux
+
+Store is passed via Provider
+
+```js
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import reducer from './store/reducer';
+
+const store = createStore(reducer);
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+```
+
+<!-- prettier-ignore -->
+***
+
+### Mobx
+
+Store
+
+```js
+import { observable, action } from 'mobx';
+
+class AppStore {
+  // state
+  @observable counter = 10;
+
+  // actions
+  @action.bound
+  increment() {
+    this.counter += 1; // this can be a mutable change
+  }
+}
+const store = new AppStore();
+```
+
+<!-- prettier-ignore -->
+***
+
+### Mobx
+
+<!-- prettier-ignore -->
+```js
+import { observer } from 'mobx-react';
+
+@observer // make component re-render to state changes
+class Counter extends Component {
+  render() {
+    return (
+      <div>
+        {this.props.store.counter}
+        <button onClick={this.props.actions.increment}>
+            Inc
+        </button>
+      </div>
+    );
+  }
+}
+
+<Counter store={store} />;
+```
+
+<!-- prettier-ignore -->
+***
+
+### Mobx
+
+Required setup to use 'Decorators'
 
 ```bash
 yarn add babel-plugin-transform-decorators-legacy --dev
@@ -73,134 +367,33 @@ yarn add babel-plugin-transform-decorators-legacy --dev
 }
 ```
 
-```bash
-yarn add mobx mobx-react
-```
-
-```js
-// src/stores/myStore
-import { observable, action, computed } from 'mobx';
-
-class MyStore {
-  @observable birds = [];
-
-  @action
-  addBird = bird => {
-    this.birds.push(bird);
-  };
-
-  @computed
-  get birdCount() {
-    return birds.length;
-  }
-}
-
-const store = new MyStore();
-export default store;
-```
-
-```jsx
-// index.js
-import { Provider} from 'mobx-react'
-import BirdStore from './stores/myStore'
-
-const Root = {
-    <Provider BirdStore={MyStore}>
-        <App/>
-    </Provider>
-}
-
-ReactDOM.render(Root, ...)
-```
-
-```jsx
-// App.js
-import { inject, observer } from 'mobx-react';
-
-@inject('BirdStore')
-@observer
-class App extends Component {
-  handleSubmit = e => {
-    e.preventDefault();
-    const bird = this.bird.value;
-    this.props.BirdStore.addBird(bird);
-    this.bird.value = '';
-  };
-  render() {
-    const { BirdStore } = this.props;
-    return (
-      <div>
-        <h2>{BirdStore.birdCount}</h2>
-        <form onSubmit={e => this.handleSubmit(e)}>
-          <input type="text" ref={input => (this.bird = input)} />
-          <button>Add Bird</button>
-        </form>
-
-        <ul>
-          {BirdStore.birds.map((bord, index) => <li key={index}>{bird}</li>)}
-        </ul>
-      </div>
-    );
-  }
-}
-```
-
 <!-- prettier-ignore -->
 ***
 
-## Async action
+### Mobx
+
+Async action
 
 ```js
-import { observer, inject } from 'mobx-react';
-class App extends Component {}
-
-export default inject('MyStore')(observer(App));
-```
-
-```js
-import { decorate, observable, configure, runInAction } from 'mobx';
-
-configure({ enforceActions: true });
+import { observable, runInAction } from 'mobx';
 
 class MyStore {
-  @observable
-  weatherData = {};
+  @observable products = {};
 
   @action
-  loadWeather = city => {
-      fetch(...).then(res => {
-          runInAction(() => {
-              weatherData = res.data;
-          })
-      })
-  };
-
-  @action
-  loadWeatherAsync = async city => {
-      const res = await fetch(...);
+  loadProducts() {
+    api.getProducts().then(res => {
+      // need to wrap async result
       runInAction(() => {
-         weatherData = res.data;
-      })
-  };
-
-  @flow
-  loadWeatherGenerator = function*(city) {
-      const res = yield fetch(...);
-      weatherData = res.data;
-  };
-S
+        weatherData = res.data;
+      });
+    });
+  }
 }
-
-decorate(MyStore, {
-  weatherData: observable,
-  loadWeather: action,
-  loadWeatherAsync: action,
-  loadWeatherGenerator: flow
-});
 ```
 
-https://github.com/mobxjs/babel-plugin-mobx-deep-action
-plugin-transform-async-to-generator
+Simplify async action
+[babel-plugin-mobx-deep-action](https://github.com/mobxjs/babel-plugin-mobx-deep-action)
 
 ---
 
@@ -211,8 +404,33 @@ plugin-transform-async-to-generator
 <!-- prettier-ignore -->
 ***
 
-## Resources
+### Resources
 
+Redux
+
+- [Awesome Redux](https://github.com/xgrommx/awesome-redux)
 - [The Ugly Side Of Redux](https://codeburst.io/the-ugly-side-of-redux-6591fde68200)
-- [Creating a Mobx-State-Tree Store in React](http://www.palador.com/2017/09/19/creating-mobx-state-tree-store-react/)
 - [Redux vs MobX: Which Is Best for Your Project?](https://www.sitepoint.com/redux-vs-mobx-which-is-best/)
+
+<!-- prettier-ignore -->
+***
+
+### Resources
+
+Mobx
+
+- [Awesome MobX](https://github.com/mobxjs/awesome-mobx)
+- [Mobx React — Best Practices](https://medium.com/dailyjs/mobx-react-best-practices-17e01cec4140)
+- [Creating a Mobx-State-Tree Store in React](http://www.palador.com/2017/09/19/creating-mobx-state-tree-store-react/)
+
+<!-- prettier-ignore -->
+***
+
+### Resources
+
+Other
+
+- [unstated](https://github.com/jamiebuilds/unstated)
+- [react-waterfall](https://github.com/didierfranc/react-waterfall)
+- [mobx-state-tree](https://github.com/mobxjs/mobx-state-tree)
+- [parket](https://github.com/ForsakenHarmony/parket)
