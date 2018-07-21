@@ -662,10 +662,10 @@ No more linting errors for formatting.
 Pre-defined projects for easy startup. Where to find?
 
 ```
-<root>/starter/js-eslint-prettier
-<root>/starter/jsx-webpack
-<root>/starter/js-react-webpack
-<root>/starter/js-react-cra-prettier
+<root>/starters/react-webpack-jsx
+<root>/starters/react-webpack
+<root>/starters/react-parcel
+<root>/starters/react-cra-prettier
 ```
 
 Ready to:
