@@ -141,13 +141,14 @@ See Also [here](https://guides.github.com/features/mastering-markdown/) and [her
 Tools
 
 - [VSCode](https://code.visualstudio.com/)
-- http://markdownpad.com (win)
-- https://caret.io/
+- [MarkdownPad](http://markdownpad.com) - Windows Only
+- [Caret](https://caret.io/)
 
 Online Tools
 
-- https://dillinger.io/
-- https://stackedit.io/editor
+- [HackMD](https://hackmd.io/)
+- [Dillinger](https://dillinger.io/)
+- [StackEdit](https://stackedit.io/editor)
 
 ---
 

@@ -7,18 +7,11 @@ export default class SimpleForm extends Component {
   render() {
     return (
       <div>
-        <h2>Formik Form - With Fields & Validation</h2>
+        <h2>Formik Form - With Fields</h2>
         <Formik
           initialValues={{
-            name: 'new',
+            name: '',
             email: '',
-          }}
-          validate={values => {
-            const errors = {};
-            if (!values.name) {
-              errors.name = 'Required';
-            }
-            return errors;
           }}
           onSubmit={(values, actions) => {
             console.log('submit', values);
@@ -28,7 +21,7 @@ export default class SimpleForm extends Component {
               console.log('submit done');
             }, 2000);
           }}
-          render={({ errors, touched, isSubmitting }) => (
+          render={({ touched, isSubmitting }) => (
             <Form>
               <label htmlFor="name" style={{ display: 'block' }}>
                 Name
@@ -51,7 +44,7 @@ export default class SimpleForm extends Component {
               <button type="submit" disabled={isSubmitting}>
                 Submit
               </button>
-              <PrettyJson data={{ errors, touched, isSubmitting }} />
+              <PrettyJson data={{ touched, isSubmitting }} />
             </Form>
           )}
         />
