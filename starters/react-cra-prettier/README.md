@@ -23,7 +23,7 @@ $ yarn test
 
 ## Features
 
-The default CRA bootstrap is updated with following features
+The default CRA bootstrap, updated with following features
 
 - [x] Npm Scripts: serve, build, lint, format and test
 - [x] VSCode recommended extensions and settings for ES development

@@ -1,7 +1,7 @@
 {
-  "name": "js-webpack",
+  "name": "react-parcel",
   "version": "1.0.0",
-  "description": "Babel WebPack Template",
+  "description": "Babel Parcel Starter",
   "scripts": {
     "serve": "cross-env NODE_ENV=development parcel serve src/index.html",
     "build": "cross-env NODE_ENV=development parcel build src/index.html --no-minify",

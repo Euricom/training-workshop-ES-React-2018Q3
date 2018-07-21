@@ -12,12 +12,7 @@
   // ===
   // Files
   // ===
-  "files.exclude": {
-    "**/*.log": true,
-    "**/*.log*": true,
-    "**/dist": false,
-    "**/coverage": true
-  },
+  "files.exclude": {},
   "files.autoSave": "onFocusChange",
   // ===
   // HTML

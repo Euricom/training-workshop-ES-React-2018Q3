@@ -1,6 +1,7 @@
-# js-react-webpack
+# react-webpack-jsx
 
 This is a starter project to get up and running with JSX and ES6+ quick and easy.
+But is also ready to do more React work.
 
 ## Prerequisites
 
@@ -20,7 +21,7 @@ $ yarn serve
 
 ## Features
 
-- [x] Basic JSX setup with ES6+ transpiling and bundeling
+- [x] Basic JSX/React setup with ES6+ transpiling and bundeling
 - [x] Npm Scripts: serve, build, lint, format
 - [x] VSCode recommended extensions and settings for ES development
 - [x] Prettier code formatting

@@ -1,7 +1,7 @@
 {
-  "name": "jsx-webpack",
+  "name": "react-webpack-jsx",
   "version": "1.0.0",
-  "description": "JSX WebPack Template",
+  "description": "React WebPack JSX Starter",
   "scripts": {
     "serve": "webpack-dev-server --open --inline --hot",
     "build": "webpack",

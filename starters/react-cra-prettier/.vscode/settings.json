@@ -12,12 +12,7 @@
   // ===
   // Files
   // ===
-  "files.exclude": {
-    "**/*.log": true,
-    "**/*.log*": true,
-    "**/dist": true,
-    "**/coverage": true
-  },
+  "files.exclude": {},
   "files.autoSave": "onFocusChange",
   // ===
   // HTML
@@ -36,11 +31,11 @@
     "html": ["htm", "html"]
   },
   "beautify.ignore": [
-      "**/*.js",
-      "**/*.ts",
-      "**/*.json",
-      "**/*.css",
-      "**/*.scss"
+    "**/*.js",
+    "**/*.ts",
+    "**/*.json",
+    "**/*.css",
+    "**/*.scss"
   ],
   "attrsSorter.order": [
     "id",
