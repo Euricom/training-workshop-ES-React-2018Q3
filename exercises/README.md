@@ -32,7 +32,27 @@ if (data.length > 0) {
 }
 ```
 
-## Exercise 2 - Functional programming
+## Exercise 2 - This
+
+```js
+global.fullname = 'John Doe'
+const obj = {
+   fullname: 'Colin Ihrig',
+   prop: {
+      fullname: 'Aurelio De Rosa',
+      getFullname: function() {
+         return this.fullname
+      }
+   }
+}
+const test = obj.prop.getFullname
+console.log(test())
+```
+
+Make the console.log(...) prints 'Aurelio De Rosa'.<br>
+Don't change the obj! Find multiple solutions
+
+## Exercise 3 - Functional programming
 
 Write a function that takes an argument and returns that argument.
 
@@ -72,7 +92,7 @@ add3(4)             // 7
 curry(mul, 5)(6)    // 30
 ```
 
-## Exercise 3 - Immutability
+## Exercise 4 - Immutability
 
 Write a pure function to change the name of the customer
 
@@ -108,10 +128,11 @@ customer = updateCustomerName(customers, 1, 'Euricom nv.');
 console.log(customers)
 ```
 
-## Exercise 4 - User List (JSX)
+## Exercise 5 - User List (JSX)
 
 - Use raw JSX (no react)
 - Show list of users in table (Name, Email, Phone)
+- Only show active users
 - Use users list from user.js
 - Styling with bootstrap
 - Optional: Add City
@@ -132,8 +153,7 @@ console.log(customers)
   https://getbootstrap.com/docs/3.3/css/#tables
 ```
 
-
-## Exercise 5 - Toggle Text (Component State & Event)
+## Exercise 6 - Toggle Text (Component State & Event)
 
 - App Component
 - Toggle visibility of some text with a button
@@ -151,7 +171,7 @@ console.log(customers)
 <button>Toggle Text</button>
 ```
 
-## Exercise 6 - Alert Component (Props)
+## Exercise 7 - Alert Component (Props)
 
 - Create alert component with [bootstrap styling](https://getbootstrap.com/docs/3.3/components/#alerts)
 
@@ -163,7 +183,7 @@ console.log(customers)
 </Alert>
 ```
 
-## Exercise 7 - Shop Product List
+## Exercise 8 - Shop Product List
 
 - Create app to show products grid
 - Load products from API
@@ -179,11 +199,11 @@ console.log(customers)
 - Optional: add an error message when the communication fails
 - Optional: load more products when scrolling down, use [react-infinite-scroller](https://cassetterocks.github.io/react-infinite-scroller/demo/)
 
-## Exercise 8 - Shop ErrorBoundery
+## Exercise 9 - Shop ErrorBoundery
 
 - Add error bounderies to your application Shop
 
-## Exercise 9 - Render Props
+## Exercise 10 - Render Props
 
 - Write a counter logic components. Every time you click on it the counter increments. The couter state must be passed over the render prop.
 
@@ -199,8 +219,13 @@ const App = () => (
 );
 ```
 
-## Exercise 7 - Shop Basket
+## Exercise 11 - Product List with Mobx
 
+- Refactor the product list with a Mobx store.
+
+## Exercise 12 - Shop Basket
+
+- Continue to use MobX
 - Add a shopping basket
 - Allow products to put in basket (add to basket button)
 - Use basket API from [euri-test-api](https://euri-test-api.now.sh)
@@ -210,3 +235,4 @@ const App = () => (
     + Total price
 - On refresh page make sure the basket is filled in
 - Optional: provide clear basket
+- Optional: store the basket on the serve

@@ -57,7 +57,41 @@ const users = data
     })
 ```
 
-## Exercise 2 - Functional programming
+## Exercise 2 - This
+
+```js
+window.fullname = 'John Doe'
+const obj = {
+   fullname: 'Colin Ihrig',
+   prop: {
+      fullname: 'Aurelio De Rosa',
+      getFullname: function() {
+         return this.fullname
+      }
+   }
+}
+const test = obj.prop.getFullname
+console.log(test())  // ouput: 'John Doe'
+```
+
+Make the console.log(...) prints 'Aurelio De Rosa'.<br>
+Don't change the obj! Find multiple solutions
+
+
+
+
+
+
+
+
+// solution
+console.log(obj.prop.getFullname())  // output 'Aurelio De Rosa'
+console.log(test.call(obj.prop))     // output 'Aurelio De Rosa'
+const test = obj.prop.getFullname.bind(obj.prop)
+test()                               // output 'Aurelio De Rosa'
+
+
+## Exercise 3 - Functional programming
 
 Write a function that takes an argument and returns that argument.
 
@@ -176,7 +210,7 @@ function curry(fn, x) {
 }
 ```
 
-## Exercise 3 - Immutability
+## Exercise 4 - Immutability
 
 Write a pure function to change the name of the customer
 
@@ -264,27 +298,27 @@ function updateCustomerName(customers, id, name) {
 }
 ```
 
-## Exercise 4 - User List (JSX)
+## Exercise 5 - User List (JSX)
 
 See 'react-alert'
 
-## Exercise 5 - Toggle Text (Component State & Event)
+## Exercise 6 - Toggle Text (Component State & Event)
 
 See 'react-alert'
 
-## Exercise 6 - Alert Component (Props)
+## Exercise 7 - Alert Component (Props)
 
 See 'react-alert'
 
-## Exercise 7 - Shop Product List
+## Exercise 8 - Shop Product List
 
 See 'react-shop-products'
 
-## Exercise 8 - Shop ErrorBoundery
+## Exercise 9 - Shop ErrorBoundery
 
 See 'react-shop-products'
 
-## Exercise 9 - Render Props
+## Exercise 10 - Render Props
 
 - Write a counter logic components. Every time you click on it the counter increments. The couter state is passed as a render prop.
 
@@ -323,5 +357,14 @@ class Counter extends Component {
     }
 }
 ```
+
+## Exercise 11 - Product List with Mobx
+
+- See 'react-shop-basket-mobx'
+
+## Exercise 12 - Shop Basket
+
+- See 'react-shop-basket-mobx'
+
 
 
