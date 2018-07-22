@@ -1,3 +1,3 @@
-# react-shop-1
+# react-shop-react-unstated
 
-Exercise Product List
+Sample web shop with unstated

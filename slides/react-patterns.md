@@ -1,4 +1,3 @@
-
 ---
 title: React Patterns
 transition: 'fade'
@@ -56,39 +55,7 @@ Copyright (c) 2018 Euricom nv.
 <!-- prettier-ignore -->
 ***
 
-## Spread props
-
-```jsx
-class App extends Component {
-  const title = 'Hello';
-  const props = { firstName="peter", lastName="jansens" }
-  render() {
-    return <Greeting title={title} {...props} />;
-  }
-}
-```
-
-<!-- prettier-ignore -->
-***
-
-### Read-only Props
-
-All Props are Read-Only
-
-```jsx
-class MyComponent extends Component {
-  constructor(props) {
-    super(props);
-    // BAD: Error is thrown
-    props.title = `-- ${props.title} --`;
-  }
-}
-```
-
-<!-- prettier-ignore -->
-***
-
-### Children prop
+## Children prop
 
 <!-- prettier-ignore -->
 ```jsx
@@ -102,13 +69,85 @@ function FancyButton(props) {
 ```
 
 ```jsx
-<FancyButton>Click Me</FancyButton>
+<FancyButton>
+  <strong>Click Me</strong>
+</FancyButton>
 ```
 
 <!-- prettier-ignore -->
 ***
 
-### Validating
+## Spreading props
+
+```jsx
+class App extends Component {
+  const obj = { firstName="peter", lastName="jansens" }
+  render() {
+    return (
+        <Greeting firstName={obj.firstName}
+                  lastName={obj.lastName} />
+        )
+  }
+}
+```
+
+with spreading the props
+
+```jsx
+class App extends Component {
+  const obj = { firstName="peter", lastName="jansens" }
+  render() {
+    return <Greeting {...obj} />;
+  }
+}
+```
+
+passing props from parent
+
+```jsx
+const FancyButton = props => (
+  <button className="FancyButton" {...props}>
+    {props.children}
+  </button>
+);
+
+<FancyButton title="save the user">Save</FancyButton>;
+```
+
+<!-- prettier-ignore -->
+***
+
+## Read-only Props
+
+All Props are Read-Only
+
+```jsx
+class MyComponent extends Component {
+  constructor(props) {
+    super(props);
+    // BAD: Error is thrown
+    props.title = `-- ${props.title} --`;
+  }
+}
+```
+
+Copy it over to state
+
+```jsx
+class MyComponent extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        title: `-- ${props.title} --`;
+    }
+  }
+}
+```
+
+<!-- prettier-ignore -->
+***
+
+## Validating
 
 Validate props
 
@@ -135,7 +174,10 @@ MyComponent.defaultProps = {
 
 This syntax can also be used on class components
 
-### Validating
+<!-- prettier-ignore -->
+***
+
+## Validating
 
 Validate with static members
 
@@ -154,17 +196,16 @@ class MyComponent extends Component {
   };
 
   render() {
+    const { title } = this.props;
     return (
-       <h3>{this.props.title}<h3>
+       <h3>{title}<h3>
+       <p>{count * 100}</p>
     );
   }
 }
 ```
 
 > static members requires babel-preset-stage-2
-
-<!-- prettier-ignore -->
-***
 
 ---
 
@@ -208,43 +249,56 @@ export default class MyComponent extends Component {
 
 ## Complex State update
 
-```jsx
-// single value
-this.setState({
-  counter: 1,
-});
+Initial state
 
-// single update, complex state
-// set state will always set the complete state
+```jsx
+state = {
+  title: 'Euricom',
+  counter: 10,
+};
+```
+
+Set state will always set the complete state
+
+```js
 this.setState({
   ...this.state    // take all other state properties
   counter: 1,      // set counter to 1
 });
+```
 
+Better
+
+```js
 // better: set by callback
-this.setState((state) => ({
+this.setState((state, props) => ({
   ...state
   counter: 1,
 }));
 ```
 
+> state update is immutable
+
 <!-- prettier-ignore -->
 ***
 
-### Async SetState
+## SetState is async
 
 ```js
-// Issue: state is asynchronous
 this.setState({
-  counter: this.state + 1,
+  ...this.state,
+  counter: 1,
 });
-console.log(this.state); // State may be not updated yet
+console.log(this.state); // State is not updated yet
+```
 
-// Fix: result callback
+Fix: result callback
+
+```js
 this.setState(
     (state, props) => ({
         ...state
-        counter: props.initialValue,
+        counter: 1,
     }),
     (state) => {
         // now the state is changed
@@ -262,7 +316,11 @@ this.setState(
 <!-- prettier-ignore -->
 ***
 
-## HOC Sample
+## Higher-Order Component (HOC)
+
+> A higher-order component is a function that accepts a component as an argument and returns an extended version of that component.
+
+Sample
 
 ```jsx
 import React from 'react';
@@ -276,20 +334,13 @@ const withSecretToLife = WrappedComponent => {
 
   return HOC;
 };
-
 export default withSecretToLife;
-```
-
-Wrap around App
-
-```js
-const EnhancedApp = withSecretToLife(App);
 ```
 
 <!-- prettier-ignore -->
 ***
 
-## Use of HOC
+## Higher-Order Component
 
 <!-- prettier-ignore -->
 ```js
@@ -305,33 +356,133 @@ const App = props => (
 export default withSecretToLife(App);
 ```
 
+And use as a normal app component
+
+```js
+import App from './app.js';
+render(<App />, element);
+```
+
 <!-- prettier-ignore -->
 ***
 
 ## Practical usecase
 
+The HOC
+
 ```js
-const hasLogger = (prefix = '') => WrappedComponent => {
-  const HasLogger = props => {
+const withLogger = (prefix = '') => WrappedComponent => {
+  const WithLogger = props => {
     console.log(`${prefix}[Props]:`, props);
     return <WrappedComponent {...props} />;
   };
 
   return HasLogger;
 };
+export default withLogger;
 ```
 
+Enhance the component
+
 ```js
-import hasLogger form './hasLogger';
+import withLogger form './withLogger';
 
 const MyComponent = (props) => <h1>MyComponent</h1>
 
-export default hasLogger(MyComponent)
+export default withLogger(MyComponent)
 ```
 
 Logs props to the console on every render of the WrappedComponent.
 
 [More Samples](https://medium.com/dailyjs/react-composing-higher-order-components-hocs-3a5288e78f55)
+
+---
+
+# Context
+
+> Using context, we can avoid passing props through intermediate elements:
+
+<!-- prettier-ignore -->
+***
+
+## Context
+
+Provide a value
+
+```jsx
+const { Provider, Consumer } = React.createContext('');
+class App extends React.Component {
+  render() {
+    return (
+      <Provider value="dark">
+        <Toolbar />
+      </Provider>
+    );
+  }
+}
+```
+
+A component in the middle doesn't have to pass the theme down explicitly anymore
+
+```jsx
+const Toolbar = props => <ThemedButton />;
+```
+
+Use a Consumer to read the current theme context. <br>React will find the closest theme Provider above and use its value.
+
+```jsx
+const ThemedButton = props => (
+  <Consumer>{theme => <Button {...props} theme={theme} />}</Consumer>
+);
+```
+
+<!-- prettier-ignore -->
+***
+
+## Context
+
+Context can be a complex object
+
+```jsx
+export const ThemeContext = React.createContext({
+  theme: 'dark',
+  maxWidth: '800px',
+  font: 'Helvetica',
+  toggleTheme: () => {},
+});
+```
+
+<!-- prettier-ignore -->
+***
+
+## Context
+
+You can consuming Context with a HOC
+
+```js
+const ThemeContext = React.createContext('light');
+
+export default (withTheme = Component => {
+  // ...and returns another component...
+  return props => {
+    // ... and renders the wrapped component with the context theme!
+    // Notice that we pass through any additional props as well
+    return (
+      <ThemeContext.Consumer>
+        {theme => <Component {...props} theme={theme} />}
+      </ThemeContext.Consumer>
+    );
+  };
+});
+```
+
+```js
+const Button = ({ theme, ...rest }) => {
+  return <button className={theme} {...rest} />;
+};
+
+const ThemedButton = withTheme(Button);
+```
 
 ---
 
@@ -360,7 +511,7 @@ export default class ErrorBoundery extends Component {
   };
 
   componentDidCatch(error, errorInfo) {
-    this.setState({ haseError: true, error, errorInfo });
+    this.setState({ hasError: true, error, errorInfo });
   }
 
   render() {

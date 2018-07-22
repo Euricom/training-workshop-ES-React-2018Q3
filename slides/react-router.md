@@ -53,7 +53,17 @@ Copyright (c) 2018 Euricom nv.
 
 # React Router
 
+> Views, views, views
+
+<!-- prettier-ignore -->
+***
+
+## Setup & docs
+
+Install
+
 ```bash
+# install DOM version
 yarn add react-router-dom
 ```
 
@@ -65,7 +75,7 @@ Resources:
 <!-- prettier-ignore -->
 ***
 
-## Router
+## Basic routing
 
 ```jsx
 import React from 'react';
@@ -73,7 +83,6 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 const Home = () => <h1>Home</h1>;
 const About = () => <h1>About</h1>;
-const NotFound = () => <h1>Not Found</h1>;
 
 export default () => (
   <Router>
@@ -82,6 +91,29 @@ export default () => (
       <Route path="/about" component={About} />
       <Route component={NotFound} />
     </div>
+  </Router>
+);
+```
+
+<!-- prettier-ignore -->
+***
+
+## 404 routing
+
+Use Switch to only render the first match.
+
+```js
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+const NotFound = () => <h1>Not Found</h1>;
+
+export default () => (
+  <Router>
+    <Switch>
+      <Route path="/" exact component={Home} />
+      <Route path="/about" component={About} />
+      <Route component={NotFound} />
+    </Switch>
   </Router>
 );
 ```
@@ -139,7 +171,7 @@ Use render prop & Redirect component
 <!-- prettier-ignore -->
 ***
 
-## Navigate by code
+## Programmatically navigate
 
 Use HOC 'withRouter' to have access to 'history'
 
@@ -150,7 +182,7 @@ const MyComponent = withRouter(({history}) => {
   return (
     <div>
       <h1>MyComponent</h1>
-      <button onClick={history.push('/')}
+      <button onClick={() => history.push('/')}
     </div>
   );
 });
@@ -160,15 +192,4 @@ const MyComponent = withRouter(({history}) => {
 
 # Resources
 
-> Get the extra information
-
-<!-- prettier-ignore -->
-***
-
-## Resources
-
 - [React Router Playlist](https://www.youtube.com/watch?v=ojYbcon588A&list=PLqrUy7kON1mfJ1cQfJJ1FiULLNngvlFTD)
-
----
-
-# Open your pages

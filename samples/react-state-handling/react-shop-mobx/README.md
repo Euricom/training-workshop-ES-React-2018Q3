@@ -1,3 +1,3 @@
-# react-shop-1
+# react-shop-mobx
 
-Exercise Product List
+Sample web shop of mobx

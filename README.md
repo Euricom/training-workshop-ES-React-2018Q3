@@ -26,13 +26,14 @@
 
 - [Intro](./slides/intro.md)
 - JavaScript & Tooling
-    - [Javascript Refresh](./slides/javascript-refresh.md)
-    - [JavaScript Tooling and Editor](./slides/javaScript-tooling-and-editor.md)
+  - [JavaScript Tooling and Editor](./slides/javaScript-tooling-and-editor.md)
+  - [Javascript Refresh](./slides/javascript-refresh.md)
 - React
-    - [React Introduction](./slides/react-introduction.md)
-    - [React Patterns](./slides/react-patterns.md)
-    - [React Forms](./slides/react-forms.md)
-    - [React State Management](./slides/react-state-management.md)
+  - [React Introduction](./slides/react-introduction.md)
+  - [React Patterns](./slides/react-patterns.md)
+  - [React Forms](./slides/react-forms.md)
+  - [React Router](./slides/react-router.md)
+  - [React State Management](./slides/react-state-management.md)
 
 ### View Slides (in presentation style)
 
@@ -54,7 +55,7 @@ $ reveal-md . --theme moon
 $ reveal-md . --theme solarized --highlightTheme github-gist
 
 # specific presentation
-$ reveal-md ./slides/unit-tests.md --title 'Unit-Tests' --theme solarized --highlightTheme github-gist
+$ reveal-md ./slides/javascript-refresh.md --title 'Unit-Tests' --theme solarized --highlightTheme github-gist
 ```
 
 ## License

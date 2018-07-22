@@ -5,7 +5,9 @@ verticalSeparator: "^\\*\\*\\*"
 ---
 
 # JavaScript Refresh
+
 #### All you need to know to build React apps
+
 <small>by Peter Cosemans</small>
 <br>
 <br>
@@ -67,6 +69,7 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 - ES.Next
 
 Note:
+
 - ECMAScript: A language standardized by ECMA International.
 - JavaScript: The commonly used name for implementations of the ECMAScript standard
 - ECMAScript 5 (ES5): The 5th edition of ECMAScript, standardized in 2009
@@ -88,6 +91,7 @@ Note:
 ---
 
 # What you should know
+
 > A quick course on JavaScript
 
 <!-- prettier-ignore -->
@@ -97,19 +101,19 @@ Note:
 
 ```js
 // ES5 style
-var name = 'Peter'
+var name = 'Peter';
 
 // ES6 style
-const name = 'Peter'
+const name = 'Peter';
 let value = 10;
 value = 11;
 
 // It's a constant reference, not constant value
-const obj = { name: 'peter' }
-obj.name = 'bob' ;    // no error
+const obj = { name: 'peter' };
+obj.name = 'bob'; // no error
 ```
 
-> In ES6+ always prefer ```const``` and ```let``` over ```var```.
+> In ES6+ always prefer `const` and `let` over `var`.
 
 <!-- prettier-ignore -->
 ***
@@ -167,13 +171,13 @@ Simpler syntax
 
 ```js
 const createGreeting = function(message, name) {
-    return message + name;
-}
+  return message + name;
+};
 
 // version 1
 const arrowGreeting = (message, name) => {
-    return message + name;
-}
+  return message + name;
+};
 
 // version 2
 const arrowGreeting = (message, name) => message + name;
@@ -188,19 +192,18 @@ Simpler syntax
 
 ```js
 const createGreeting = function(message, name) {
-    return {
-        message,
-        name
-    }
-}
+  return {
+    message,
+    name,
+  };
+};
 
 // multi line return
 const createGreeting = (message, name) => ({
-    message,
-    name
-})
+  message,
+  name,
+});
 ```
-
 
 <!-- prettier-ignore -->
 ***
@@ -215,39 +218,41 @@ The value of the this reference is defined by the following rules:
 - Explicit binding
 - The call context
 
-
 <!-- prettier-ignore -->
 ***
 
 ## this
+
 ### The call context
 
 ```js
 const obj = {
   name: 'peter',
   doThis() {
-    console.log(this.name)
-  }
-}
+    console.log(this.name);
+  },
+};
 
-obj.doThis();   // output: 'peter'
+obj.doThis(); // output: 'peter'
 ```
+
 Follow the dot (.)
 
 <!-- prettier-ignore -->
 ***
 
 ## this
+
 ### Explicit binding
 
 ```js
 function doThis(prefix) {
-  console.log(prefix + ' ' + this.name)
+  console.log(prefix + ' ' + this.name);
 }
 
-const otherObj = { name: 'john'};
-doThis.call(otherObj, 'Mr')       // output: 'Mr john'
-doThis.apply(otherObj, ['Sir'])   // output: 'Sir john'
+const otherObj = { name: 'john' };
+doThis.call(otherObj, 'Mr'); // output: 'Mr john'
+doThis.apply(otherObj, ['Sir']); // output: 'Sir john'
 ```
 
 Use 'call' or 'apply'
@@ -256,6 +261,7 @@ Use 'call' or 'apply'
 ***
 
 ## this
+
 ### Hard binding
 
 ```js
@@ -283,6 +289,7 @@ car.start();        // output: Bmw started
 ***
 
 ## this
+
 ### arrow function
 
 ```js
@@ -302,15 +309,16 @@ It's hard binding to the outer scope
 ***
 
 ## this
+
 ### New operator
 
 ```js
 // Constructor function
 function User(name) {
-    this.name = name;
+  this.name = name;
 }
 const user = new User('peter');
-user.name;         // 'peter'
+user.name; // 'peter'
 ```
 
 ```js
@@ -321,8 +329,9 @@ class User {
   }
 }
 const user = new User('peter');
-user.name;         // 'peter'
+user.name; // 'peter'
 ```
+
 <!-- prettier-ignore -->
 ***
 
@@ -364,10 +373,10 @@ const { url } = myConfig;
 destructor the arguments
 
 ```js
-function getData({url}) {
-    console.log(url)
+function getData({ url }) {
+  console.log(url);
 }
-getData(myConfig)
+getData(myConfig);
 ```
 
 <!-- prettier-ignore -->
@@ -379,16 +388,19 @@ We can destruct nested objects
 
 ```js
 const store = {
-  customer: { name: 'euricom', location: 'mechelen'},
+  customer: { name: 'euricom', location: 'mechelen' },
   pending: false,
   addCustomer(arg) {
     // ....
-  }
+  },
 };
 
-const { customer: { name }, addCustomer } = store;
-name === 'euricom'
-addCustomer(arg)
+const {
+  customer: { name },
+  addCustomer,
+} = store;
+console.log(name);
+addCustomer(arg);
 ```
 
 <!-- prettier-ignore -->
@@ -404,6 +416,8 @@ class MyClass {}
 function Annotation(target) {
   target.annotated = true; // Add a property on target
 }
+
+console.log(MyClass.annotated); // true
 ```
 
 ```js
@@ -429,7 +443,6 @@ To enable decorators you must add a babel plugin
 
 [babel-plugin-transform-decorators-legacy](https://www.npmjs.com/package/babel-plugin-transform-decorators-legacy)
 
-
 ```
 {
     "preset": "react",
@@ -437,17 +450,10 @@ To enable decorators you must add a babel plugin
 }
 ```
 
-or enable stage-2
-
-```
-{
-    "preset": ["react", "stage-2"]
-}
-```
-
 ---
 
 # Modules
+
 > Structure your code
 
 <!-- prettier-ignore -->
@@ -458,17 +464,15 @@ or enable stage-2
 ```js
 // myLib.js
 module.exports = {
-    setName: function() {
-    }
-}
+  setName: function() {},
+};
 
 // main.js
 const myLib = require('./mylib.js');
 myLib.setName();
 ```
 
-Used by nodeJS
-
+Used by nodeJS (webpack.config.js, .eslintrc.js, ...)
 
 <!-- prettier-ignore -->
 ***
@@ -491,17 +495,18 @@ export default config;           // default (unnamed) export
 main.js
 
 ```js
-import config from './service';             // default import
-import { MAX_LENGTH, Car } from './service' // named imports
+import config from './service'; // default import
+import { MAX_LENGTH, Car } from './service'; // named imports
 
-import * as lib from './service';           // import all
-console.log(lib.MAX_LENGTH)
+import * as lib from './service'; // import all
+console.log(lib.MAX_LENGTH);
 const car = new lib.Car();
 ```
 
 ---
 
 # Array functions
+
 > makes your live easier
 
 <!-- prettier-ignore -->
@@ -513,10 +518,10 @@ Our array
 
 ```js
 const companies = [
-  { id: 1, name: 'Acme', category: 'finance', employees: 5},
-  { id: 4, name: 'Globe', category: 'tech', employees: 1010},
-  { id: 2, name: 'Soylent', category: 'food', employees: 120}
-]
+  { id: 1, name: 'Acme', category: 'finance', employees: 5 },
+  { id: 4, name: 'Globe', category: 'tech', employees: 1010 },
+  { id: 2, name: 'Soylent', category: 'food', employees: 120 },
+];
 ```
 
 Usefull Array functions
@@ -531,8 +536,8 @@ Usefull Array functions
 Good old for loop (don't use it)
 
 ```js
-for (let i=0; i < companies.length; i++) {
-  console.log(item)
+for (let i = 0; i < companies.length; i++) {
+  console.log(item);
 }
 ```
 
@@ -541,8 +546,8 @@ Prefere
 ```js
 // forEach (loop over all items)
 companies.forEach(item => {
-  console.log(item)
-})
+  console.log(item);
+});
 ```
 
 or
@@ -563,8 +568,8 @@ Good old for loop
 
 ```js
 const companyNames = [];
-for (let i=0; i < companies.length; i++) {
-  names.push(companies[i].name)
+for (let i = 0; i < companies.length; i++) {
+  names.push(companies[i].name);
 }
 ```
 
@@ -604,8 +609,8 @@ Old style
 
 ```js
 const totEmployees = 0;
-for (let i=0; i < companies.length; i++) {
-  totEmployees += companies.employees
+for (let i = 0; i < companies.length; i++) {
+  totEmployees += companies.employees;
 }
 ```
 
@@ -615,7 +620,7 @@ Prefere
 // reduce
 const totEmployees = companies.reduce((acc, item) => {
   return acc + item.employees;
-}, 0)
+}, 0);
 ```
 
 <!-- prettier-ignore -->
@@ -627,18 +632,16 @@ const totEmployees = companies.reduce((acc, item) => {
 // filter
 const bigCompanies = companies.filter(item => {
   return item.employees > 1000;
-})
+});
 
 // filter: short version
-const bigCompanies = companies
-    .filter(item => item.employees > 1000)
+const bigCompanies = companies.filter(item => item.employees > 1000);
 
 // find
-const acme = companies.find(item => item.name === 'Acme')
+const acme = companies.find(item => item.name === 'Acme');
 
 // sort
-const sortedCompanies = companies
-    .sort((a, b) => a.name > b.name)
+const sortedCompanies = companies.sort((a, b) => a.name > b.name);
 ```
 
 <small>[JavaScript Higher Order Functions & Arrays Youtube](https://www.youtube.com/watch?time_continue=495&v=rRgD1yVwIvE)</small>
@@ -651,21 +654,18 @@ const sortedCompanies = companies
 Chain functions
 
 ```js
-const sortedNames = companies
-  .map(item => item.name)
-  .sort((a, b) => a > b)
+const sortedNames = companies.map(item => item.name).sort((a, b) => a > b);
 ```
 
 Add item to array
 
 ```js
 const name = 'Wolfoods';
-const newId = companies
-    .reduce((acc, item) => Math.max(acc, item.id), 0) + 1;
+const newId = companies.reduce((acc, item) => Math.max(acc, item.id), 0) + 1;
 companies.push({
   id: newId,
-  name
-})
+  name,
+});
 ```
 
 <!-- prettier-ignore -->
@@ -677,21 +677,21 @@ Remove an item from an array (don't use splice)
 
 ```js
 const idToRemove = 999;
-companies = companies.filter(item => item.id === idToRemove)
+companies = companies.filter(item => item.id === idToRemove);
 ```
 
 Find and update an item
 
 ```js
-const company = companies.find(item => item.id === 1)
-company.name = 'Other name'
+const company = companies.find(item => item.id === 1);
+company.name = 'Other name';
 ```
 
 ---
 
 # Async
 
-> Don't use callbacks
+> Handle it in the future.
 
 <!-- prettier-ignore -->
 ***
@@ -707,7 +707,7 @@ myAsyncAction(arg)
   })
   .catch(err => {
     // error
-  })
+  });
 ```
 
 You can chain multiple async methods
@@ -717,11 +717,11 @@ You can chain multiple async methods
 myAsyncAction(arg)
   .then(result => {
     // step 2
-    return myOtherAction(result.name);  // returns a promise
+    return myOtherAction(result.name); // returns a promise
   })
   .catch(err => {
     // common error handling
-  })
+  });
 ```
 
 <!-- prettier-ignore -->
@@ -732,11 +732,11 @@ myAsyncAction(arg)
 Wait for multiple promises
 
 ```js
-  const p1 = myAsyncAction(123);
-  const p2 = myOtherAction('peter');
-  Promise.all([p1, p2]).then(results => {
-      console.log(results); // [3, "foo"]
-  });
+const p1 = myAsyncAction(123);
+const p2 = myOtherAction('peter');
+Promise.all([p1, p2]).then(results => {
+  console.log(results); // [3, "foo"]
+});
 ```
 
 <!-- prettier-ignore -->
@@ -746,28 +746,28 @@ Wait for multiple promises
 
 ```js
 function getCustomers() {
-    return http.get('/api/customers')
-        .then(result => {
-            customers = result.data;
-            return customers;
-        })
-        .catch(err => {
-            console.log(err);
-            return [];
-        })
+  return http
+    .get('/api/customers')
+    .then(result => {
+      customers = result.data;
+      return customers;
+    })
+    .catch(err => {
+      console.log(err);
+      return [];
+    });
 }
 ```
 
 ```js
 async function getCustomers() {
-    try {
-        const result = await http.get('/api/customers');
-        return result.data
-    }
-    catch(error) {
-        console.log(err);
-        return [];
-    }
+  try {
+    const result = await http.get('/api/customers');
+    return result.data;
+  } catch (error) {
+    console.log(err);
+    return [];
+  }
 }
 ```
 
@@ -778,27 +778,25 @@ async function getCustomers() {
 
 ```js
 async function getCustomers() {
-    try {
-        const result = await http.get('/api/customers');
-        return result.data
-    }
-    catch(error) {
-        console.log(err);
-        return [];
-    }
+  try {
+    const result = await http.get('/api/customers');
+    return result.data;
+  } catch (error) {
+    console.log(err);
+    return [];
+  }
 }
 ```
 
 ```js
 function* getCustomers() {
-    try {
-        const result = yield http.get('/api/customers');
-        return result.data
-    }
-    catch(error) {
-        console.log(err);
-        return [];
-    }
+  try {
+    const result = yield http.get('/api/customers');
+    return result.data;
+  } catch (error) {
+    console.log(err);
+    return [];
+  }
 }
 ```
 
@@ -814,14 +812,18 @@ function* getCustomers() {
 ## A pure function
 
 ```js
-function sum(a, b) { return a + b }
+function sum(a, b) {
+  return a + b;
+}
 ```
 
 An impure function
 
 ```js
 const count = 1;
-function inc(v) { count += v; }
+function inc(v) {
+  count += v;
+}
 ```
 
 inc() is impure because it changes count outside its scope
@@ -897,18 +899,18 @@ const obj = { name: 'john' };
 
 // BAD
 function updatedName(obj, newName) {
-    obj.name = newName;
-    return obj;
+  obj.name = newName;
+  return obj;
 }
 
 // GOOD
 function updatedName(obj, name) {
-    // for a pure function never change
-    // the input arguments
-    return {
-        ...obj,    // spread operator is your friend
-        name
-    }
+  // for a pure function never change
+  // the input arguments
+  return {
+    ...obj, // spread operator is your friend
+    name,
+  };
 }
 
 const updatedObj = updatedName(obj, 'peter');
@@ -921,15 +923,15 @@ const updatedObj = updatedName(obj, 'peter');
 
 ```js
 // object
-const obj = { name: 'bob'};
-const newObj = { ...obj, name: 'peter' }
+const obj = { name: 'bob' };
+const newObj = { ...obj, name: 'peter' };
 
 // array push
 const array = [1, 2, 3];
-const newArray = [ ...array, 12];  // [1, 2, 3, 4]
+const newArray = [...array, 12]; // [1, 2, 3, 4]
 
 // array remove by id
-const array = [{id: 1, name: 'bob'}, {id: 2, name: 'peter'}];
+const array = [{ id: 1, name: 'bob' }, { id: 2, name: 'peter' }];
 const newArray = array.filter(item => item.id != 1);
 ```
 
@@ -941,21 +943,18 @@ const newArray = array.filter(item => item.id != 1);
 ```js
 // array remove index (start, deleteCount)
 const array = [1, 2, 3, 4];
-const newArray = [
-    ...arr.slice(0, start),
-    ...arr.slice(start + deleteCount)
-]
+const newArray = [...arr.slice(0, start), ...arr.slice(start + deleteCount)];
 
 // array change entry
 const newArray = array.map(item => {
-    if (item.id === 2) {
-        return { ...item, name: Peter }
-    }
-    return item
+  if (item.id === 2) {
+    return { ...item, name: Peter };
+  }
+  return item;
 });
 
 // array sort
-const newArray = [ ...arr ].sort(compareFunction)
+const newArray = [...arr].sort(compareFunction);
 ```
 
 ---

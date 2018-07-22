@@ -1,6 +1,6 @@
-# js-react-webpack
+# react-form-mst
 
-This is a starter project to get up and running with React, ES6+ and Babel quick and easy.
+This is sample of monx-state-tree form
 
 ## Prerequisites
 
@@ -20,16 +20,3 @@ $ yarn serve
 # run unit tests
 $ yarn test
 ```
-
-## Features
-
-- [x] Basic React/Webpack setup with ES6+ transpiling and bundeling
-- [x] Npm Scripts: serve, build, lint, format and test
-- [x] VSCode recommended extensions and settings for ES development
-- [x] Prettier code formatting
-- [x] Unit Testing with Jest
-- [x] ES linting with ESLint and [AirBnb Style Guide](https://github.com/airbnb/javascript)
-
-## Resources
-
-- https://medium.com/react-native-training/state-management-with-mobx-state-tree-373f9f2dc68a

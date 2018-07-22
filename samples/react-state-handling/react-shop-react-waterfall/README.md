@@ -1,3 +1,3 @@
-# react-shop-1
+# react-shop-react-waterfall
 
-Exercise Product List
+Sample web shop of react-waterfall

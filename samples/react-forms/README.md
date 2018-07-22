@@ -1,6 +1,6 @@
-# js-react-webpack
+# react-forms
 
-This is a starter project to get up and running with React, ES6+ and Babel quick and easy.
+This is a sample project for the react forms.
 
 ## Prerequisites
 
@@ -30,6 +30,11 @@ $ yarn test
 - [x] Unit Testing with Jest
 - [x] ES linting with ESLint and [AirBnb Style Guide](https://github.com/airbnb/javascript)
 
-## Resources
+Extra 
+- [x] Controller Form
+- [x] Uncontroller form
+- [x] Formik basic form
+- [x] Formik form with Form & Fields
+- [x] Formik form with Validation
+- [x] Formik form with custom input components
 
-- https://medium.com/react-native-training/state-management-with-mobx-state-tree-373f9f2dc68a
