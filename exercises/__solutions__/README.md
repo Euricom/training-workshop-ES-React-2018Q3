@@ -28,17 +28,22 @@ const filteredCustomers = customers.find(customer => customer.active);
 Use array functions to simplify the following code. Use arrow function where possible.
 
 ```js
-const users = []
+const data = [
+  { id: 1, active: true, lastName: 'Cosemans', firstName: 'Peter' },
+  { id: 2, active: false, lastName: 'Jansens', firstName: 'John' },
+];
+const users = [];
 if (data.length > 0) {
-    for (let i = 0; i < data.length; i++) {
-        if (data[i].active) {
-            const user = {
-                id: data.id,
-                name: users[i].firstName + ' ' + users.lastName,
-            }
-            userNames.push(user)
-        }
+  for (let i = 0; i < data.length; i++) {
+    console.log(i);
+    if (data[i].active) {
+      const user = {
+        id: data[i].id,
+        name: data[i].firstName + ' ' + data[i].lastName,
+      };
+      users.push(user);
     }
+  }
 }
 
 
@@ -49,6 +54,10 @@ if (data.length > 0) {
 
 
 // Solution
+const data = [
+  { id: 1, active: true, lastName: 'Cosemans', firstName: 'Peter' },
+  { id: 2, active: false, lastName: 'Jansens', firstName: 'John' },
+];
 const users = data
     .filter(item => item.active)
     .map({ id, firstName, lastName } => ({
