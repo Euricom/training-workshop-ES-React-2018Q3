@@ -666,6 +666,8 @@ Info
 - [Use a Render Prop!](https://cdb.reacttraining.com/use-a-render-prop-50de598f11ce)
 - [How to fetch data in React](https://www.robinwieruch.de/react-fetching-data/)
 - [Never Write Another HoC](https://www.youtube.com/watch?v=BcVAq3YFiuc)
+- [8 no-Flux strategies for React component communication](https://www.javascriptstuff.com/component-communication/)
+- [Beware: React setState is asynchronous!](https://medium.com/@wereHamster/beware-react-setstate-is-asynchronous-ce87ef1a9cf3)
 
 Patterns
 

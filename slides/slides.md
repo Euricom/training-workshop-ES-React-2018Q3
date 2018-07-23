@@ -36,6 +36,7 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
 - Starters
 - Samples
 - Resources
+- Exercises
 
 ---
 

@@ -1378,17 +1378,14 @@ export default class MyComponent extends Component {
 
 ### Web Shop
 
-- Show list of products (and there image)
-- Styling with bootstrap
-
-<br>
-### Tips
-
-```
-// API
-
-// T.B.D
-```
+- Create app to show products grid
+- Load products from API
+  [https://euri-test-api.now.sh](https://euri-test-api.now.sh)
+- Show following fields
+    + Image, Sku, Title, Stock, Price, Discount
+- Style with bootstrap
+- Optional: add an error message when the communication fails
+- Optional: load more products when scrolling down, use [react-infinite-scroller](https://cassetterocks.github.io/react-infinite-scroller/demo/)
 
 ---
 
@@ -1463,11 +1460,6 @@ Training
   from @wesbos
 - [The Beginner’s Guide to React](https://egghead.io/courses/the-beginner-s-guide-to-react) from @kentcdodds
 - [React.js cheatsheet](https://devhints.io/react)
-
-Info
-
-- [8 no-Flux strategies for React component communication](https://www.javascriptstuff.com/component-communication/)
-- [Beware: React setState is asynchronous!](https://medium.com/@wereHamster/beware-react-setstate-is-asynchronous-ce87ef1a9cf3)
 
 <!-- prettier-ignore -->
 ***
