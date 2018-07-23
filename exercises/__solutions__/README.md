@@ -60,9 +60,9 @@ const data = [
 ];
 const users = data
     .filter(item => item.active)
-    .map({ id, firstName, lastName } => ({
+    .map(({ id, firstName, lastName }) => ({
         id,
-        name: `${firstName$} ${lastName$}`,
+        name: `${firstName} ${lastName}`,
     })
 ```
 
@@ -86,6 +86,7 @@ console.log(test())  // ouput: 'John Doe'
 Make the console.log(...) prints 'Aurelio De Rosa'.<br>
 Don't change the obj! Find multiple solutions
 
+```
 
 
 
@@ -98,7 +99,7 @@ console.log(obj.prop.getFullname())  // output 'Aurelio De Rosa'
 console.log(test.call(obj.prop))     // output 'Aurelio De Rosa'
 const test = obj.prop.getFullname.bind(obj.prop)
 test()                               // output 'Aurelio De Rosa'
-
+```
 
 ## Exercise 3 - Functional programming
 
