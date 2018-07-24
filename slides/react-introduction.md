@@ -15,7 +15,6 @@ by Peter Cosemans<br>
 Copyright (c) 2018 Euricom nv.
 </small>
 
-
 <!-- markdownlint-disable -->
 <br>
 <style type="text/css">
@@ -764,7 +763,7 @@ function Welcome() {
 ```jsx
 const Welcome = () => {
   return <h1>Welcome</h1>;
-}
+};
 ```
 
 > Most component should be functional component
@@ -792,7 +791,7 @@ const template = (
 
 User-Defined Components names are Capitalized
 
-```jsx
+```
 // Welcome.js
 import React, { Component } from 'react';
 
@@ -820,8 +819,8 @@ import React, { Component } from 'react';
 
 export default class App extends Component {
   state: {
-    message: 'world'
-  }
+    message: 'world',
+  };
   render() {
     return <h1>Hello {this.state.message}</h1>;
   }
@@ -877,6 +876,35 @@ class MyComponent extends React {
       </div>
     );
   }
+}
+```
+
+<!-- prettier-ignore -->
+***
+
+### Event Handlers
+
+Be aware of the this reference
+
+```jsx
+class MyComponent extends React {
+  constructor(props) {
+    super(props);
+    this.onClickFix1 = this.onClickFix1.bind(this);
+  }
+
+  onClick() {
+    // BAD: this is not referencing the component
+    console.log('props', this.props);
+  }
+
+  onClickFix1() {
+    console.log('props', this.props);
+  }
+
+  onClickFix2 = () => {
+    console.log('props', this.props);
+  };
 }
 ```
 
@@ -1003,56 +1031,6 @@ const Greeting = ({title}) => {
 <!-- prettier-ignore -->
 ***
 
-## Event Handlers
-
-```jsx
-class MyComponent extends React {
-  onClick() {
-    console.log('clicked');
-  }
-  render() {
-    return (
-      <div>
-        <h1>Title</h1>
-        <button onClick={this.onClick}>Click Me</button>
-      </div>
-    );
-  }
-}
-```
-
-<!-- prettier-ignore -->
-***
-
-### Event Handlers
-
-Be aware of the this reference
-
-```jsx
-class MyComponent extends React {
-  constructor(props) {
-    super(props);
-    this.onClickFix1 = this.onClickFix1.bind(this);
-  }
-
-  onClick() {
-    // BAD: this is not referencing the component
-    console.log('props', this.props);
-  }
-
-  onClickFix1() {
-    console.log('props', this.props);
-  }
-
-  onClickFix2 = () => {
-    console.log('props', this.props);
-  };
-}
-```
-
-<!-- prettier-ignore -->
-***
-
 ### Props as events to parent
 
 ```jsx
@@ -1066,15 +1044,15 @@ class App extends React {
 ```
 
 ```jsx
-const MyComponent = (props) => {
-    return (
-        <div>
-          <h1>{props.title}</h1>
-          <button onClick={props.onUpdate} />
-          <button onClick={() => props.onUpdate('hello')} />
-        </div>
-    )
-}
+const MyComponent = props => {
+  return (
+    <div>
+      <h1>{props.title}</h1>
+      <button onClick={props.onUpdate} />
+      <button onClick={() => props.onUpdate('hello')} />
+    </div>
+  );
+};
 ```
 
 ---
@@ -1382,7 +1360,7 @@ export default class MyComponent extends Component {
 - Load products from API
   [https://euri-test-api.now.sh](https://euri-test-api.now.sh)
 - Show following fields
-    + Image, Sku, Title, Stock, Price, Discount
+  - Image, Sku, Title, Stock, Price, Discount
 - Style with bootstrap
 - Optional: add an error message when the communication fails
 - Optional: load more products when scrolling down, use [react-infinite-scroller](https://cassetterocks.github.io/react-infinite-scroller/demo/)
@@ -1471,12 +1449,11 @@ Training
 - [React Helmet](https://github.com/nfl/react-helmet) - A document head manager
 - [React Toastify](https://github.com/fkhadra/react-toastify) - Notification for your app
 - [Enzyme](https://github.com/airbnb/enzyme/) - JavaScript Testing utilities
-for React
+  for React
 - [React virtualized](https://bvaughn.github.io/react-virtualized) - Data Grid
 - [Recat-bootstrap](https://github.com/react-bootstrap/react-bootstrap) - Bootstrap 3 components
 - [Grommet](http://grommet.io/) - Design system for React
 - [MATERIAL-UI](https://material-ui.com/) - Google's Material Design in React
-
 
 ---
 
