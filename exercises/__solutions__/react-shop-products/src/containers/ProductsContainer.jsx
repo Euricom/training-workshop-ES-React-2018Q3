@@ -1,27 +1,54 @@
 import React, { Component } from 'react';
+import InfiniteScroll from 'react-infinite-scroller';
 
 import api from '../api';
 import ProductList from '../components/ProductList';
 
 export default class ProductContainer extends Component {
-  state = {
-    products: [],
-  };
+  state = { products: [], hasMore: true };
 
   componentDidMount() {
-    api.get('/products').then(res => {
-      this.setState({
-        products: res.data.selectedProducts,
-      });
-    });
+    // api.get('/products').then(res => {
+    //   this.setState({ products: res.data.selectedProducts });
+    // });
   }
 
-  render() {
+  loadFunc = page => {
+    console.log('load more');
     const { products } = this.state;
+    api.get(`/products?page=${page}`).then(res => {
+      const newProductList = [...products, ...res.data.selectedProducts];
+      const hasMore = newProductList.length !== res.data.total;
+      console.log({
+        hasMore,
+        length: newProductList.length,
+        total: res.data.total,
+      });
+      this.setState({
+        products: newProductList,
+        hasMore,
+      });
+    });
+  };
+
+  render() {
+    const { products, hasMore } = this.state;
     return (
       <div>
         <h2>Products</h2>
-        <ProductList products={products} />
+        <InfiniteScroll
+          initialLoad
+          pageStart={-1}
+          loadMore={this.loadFunc}
+          hasMore={hasMore}
+          loader={
+            <div className="loader" key={0}>
+              Loading ...
+            </div>
+          }
+        >
+          <ProductList products={products} />
+        </InfiniteScroll>
       </div>
     );
   }

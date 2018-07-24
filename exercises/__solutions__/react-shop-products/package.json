@@ -19,7 +19,8 @@
     "intl": "^1.2.5",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
-    "react-dom": "^16.4.1"
+    "react-dom": "^16.4.1",
+    "react-infinite-scroller": "^1.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",

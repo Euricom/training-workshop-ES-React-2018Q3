@@ -11,6 +11,7 @@
   "rules": {
     "react/prop-types": "warning",
 
+    "react/jsx-wrap-multilines": "off",
     "jsx-a11y/alt-text": "off",
     "jsx-a11y/anchor-is-valid": "off",
     "react/prefer-stateless-function": "off",
