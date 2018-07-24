@@ -5,8 +5,9 @@ import classNames from 'classnames';
 
 class Alert extends Component {
   render() {
+    console.log(this.props);
     const { children, type, onClose } = this.props;
-    const alertClasses = classNames({ alert, [`alert-${type}`]: true });
+    const alertClasses = classNames({ alert: true, [`alert-${type}`]: true });
     return (
       <div className={alertClasses}>
         {onClose && (

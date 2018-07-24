@@ -1,6 +1,7 @@
 const users = [
   {
     id: 1,
+    active: true,
     name: 'Leanne Graham',
     username: 'Bret',
     email: 'Sincere@april.biz',
@@ -12,6 +13,7 @@ const users = [
   },
   {
     id: 2,
+    active: true,
     name: 'Ervin Howell',
     username: 'Antonette',
     email: 'Shanna@melissa.tv',
@@ -23,6 +25,8 @@ const users = [
   },
   {
     id: 3,
+    active: true,
+
     name: 'Clementine Bauch',
     username: 'Samantha',
     email: 'Nathan@yesenia.net',
@@ -34,6 +38,7 @@ const users = [
   },
   {
     id: 4,
+    active: true,
     name: 'Patricia Lebsack',
     username: 'Karianne',
     email: 'Julianne.OConner@kory.org',
@@ -45,6 +50,7 @@ const users = [
   },
   {
     id: 5,
+    active: true,
     name: 'Chelsey Dietrich',
     username: 'Kamren',
     email: 'Lucio_Hettinger@annie.ca',
@@ -56,6 +62,7 @@ const users = [
   },
   {
     id: 6,
+    active: true,
     name: 'Mrs. Dennis Schulist',
     username: 'Leopoldo_Corkery',
     email: 'Karley_Dach@jasper.info',
@@ -67,6 +74,7 @@ const users = [
   },
   {
     id: 7,
+    active: true,
     name: 'Kurtis Weissnat',
     username: 'Elwyn.Skiles',
     email: 'Telly.Hoeger@billy.biz',
@@ -78,6 +86,7 @@ const users = [
   },
   {
     id: 8,
+    active: true,
     name: 'Nicholas Runolfsdottir V',
     username: 'Maxime_Nienow',
     email: 'Sherwood@rosamond.me',
@@ -89,6 +98,7 @@ const users = [
   },
   {
     id: 9,
+    active: true,
     name: 'Glenna Reichert',
     username: 'Delphine',
     email: 'Chaim_McDermott@dana.io',
@@ -100,6 +110,7 @@ const users = [
   },
   {
     id: 10,
+    active: false,
     name: 'Clementina DuBuque',
     username: 'Moriah.Stanton',
     email: 'Rey.Padberg@karina.biz',
