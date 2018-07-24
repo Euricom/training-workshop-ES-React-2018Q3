@@ -48,6 +48,128 @@ Copyright (c) 2018 Euricom nv.
 
 ---
 
+# Styling in React
+
+> Style your component
+
+<!-- prettier-ignore -->
+***
+
+## Css Files
+
+Use plain old css files
+
+```css
+/* style.css */
+.flex-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.col {
+  width: 32%;
+}
+```
+
+```js
+import 'bootstrap/dist/css/bootstrap.css';
+import './style.css';
+
+const ProductList = ({ products }) => (
+  <div className="flexGrid">
+    {products.map(product => (
+      <div className="col" key={product.id}>
+        <Product product={product} />
+      </div>
+    ))}
+  </div>
+);
+```
+
+<!-- prettier-ignore -->
+***
+
+## style property
+
+Write your style in code
+
+```js
+const flexGrid = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  justifyContent: 'space-between',
+};
+
+const col = {
+  width: '32%',
+};
+
+const ProductList = ({ products }) => (
+  <div style={flexGrid}>
+    {products.map(product => (
+      <div style={col} key={product.id}>
+        <Product product={product} />
+      </div>
+    ))}
+  </div>
+);
+```
+
+> Styles are isolated because you get inline css
+
+<!-- prettier-ignore -->
+***
+
+## Css Modules
+
+```js
+import styles from './style.css';
+
+const ProductList = ({ products }) => (
+  <div style={styles.flexGrid}>
+    {products.map(product => (
+      <div style={styles.col} key={product.id}>
+        <Product product={product} />
+      </div>
+    ))}
+  </div>
+);
+```
+
+This requires a [special webpack config](https://medium.com/nulogy/how-to-use-css-modules-with-create-react-app-9e44bec2b5c2)
+
+<!-- prettier-ignore -->
+***
+
+## Styled Components
+
+```js
+import styled from 'styled-components';
+
+const Grid = styled.div`
+  display: 'flex';
+  flexwrap: 'wrap';
+  justifycontent: 'space-between';
+`;
+
+const GridPanel = styled.div`
+  width: '32%';
+`;
+
+const ProductList = ({ products }) => (
+  <Grid>
+    {products.map(product => (
+      <GridPanel key={product.id}>
+        <Product product={product} />
+      </GridPanel>
+    ))}
+  </Grid>
+);
+```
+
+---
+
 # Props In Depth
 
 > Know your props

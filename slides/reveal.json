@@ -1,6 +1,7 @@
 {
-    "controls": true,
+    "controls": false,
     "progress": true,
+    "center": true,
     "history": true,
     "slideNumber": true,
     "width": 1224,
