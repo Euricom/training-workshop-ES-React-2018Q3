@@ -360,6 +360,38 @@ class Counter extends Component {
 
 ### Mobx
 
+Provider setup
+
+```
+import { Provider } from 'mobx-react';
+import AppStore from './store/appstore';
+
+const store = new AppStore();
+render(
+   <Provider store={store}>
+     <App />
+   </Provider>,
+   document.getElementById('root'),
+);
+```
+
+Inject into components
+
+```
+const MyComponent = () => {
+    return (
+        <p>{this.props.store.counter}</p>
+    )
+}
+
+export default inject('store')(MyComponent);
+```
+
+<!-- prettier-ignore -->
+***
+
+### Mobx
+
 Required setup to use 'Decorators'
 
 ```bash
@@ -392,7 +424,7 @@ class MyStore {
     api.getProducts().then(res => {
       // need to wrap async result
       runInAction(() => {
-        weatherData = res.data;
+        this.products = res.data;
       });
     });
   }
