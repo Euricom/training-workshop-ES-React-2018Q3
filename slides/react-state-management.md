@@ -378,10 +378,15 @@ render(
 Inject into components
 
 ```
-const MyComponent = () => {
-    return (
-        <p>{this.props.store.counter}</p>
-    )
+import { inject, observer } from 'mobx-react';
+
+@observer
+class MyComponent extends Component {
+    render() {
+        return (
+            <p>{this.props.store.counter}</p>
+        )
+    }
 }
 
 export default inject('store')(MyComponent);

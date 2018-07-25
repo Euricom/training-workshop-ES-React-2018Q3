@@ -7,23 +7,11 @@ import ProductList from '../components/ProductList';
 export default class ProductContainer extends Component {
   state = { products: [], hasMore: true };
 
-  componentDidMount() {
-    // api.get('/products').then(res => {
-    //   this.setState({ products: res.data.selectedProducts });
-    // });
-  }
-
   loadFunc = page => {
-    console.log('load more');
     const { products } = this.state;
     api.get(`/products?page=${page}`).then(res => {
       const newProductList = [...products, ...res.data.selectedProducts];
       const hasMore = newProductList.length !== res.data.total;
-      console.log({
-        hasMore,
-        length: newProductList.length,
-        total: res.data.total,
-      });
       this.setState({
         products: newProductList,
         hasMore,
