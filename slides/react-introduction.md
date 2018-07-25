@@ -848,15 +848,31 @@ Default state through constructor
 
 ```jsx
 export default class MyComponent extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     state = {
-      counter: props.initialValue || 0,
+      counter: 0,
     };
   }
   // ...
 }
 ```
+
+<!-- prettier-ignore -->
+***
+
+## Component State
+
+Set state via callback
+
+```js
+this.setState((state, props) => ({
+  ...state
+  counter: 1,
+}));
+```
+
+Via callback the previous state & props are available.
 
 <!-- prettier-ignore -->
 ***
@@ -1053,6 +1069,28 @@ const MyComponent = props => {
     </div>
   );
 };
+```
+
+<!-- prettier-ignore -->
+***
+
+## Children prop
+
+<!-- prettier-ignore -->
+```jsx
+const FancyButton = (props) => {
+  return (
+    <button className="FancyButton">
+      {props.children}
+    </button>
+  );
+}
+```
+
+```jsx
+<FancyButton>
+  <strong>Click Me</strong>
+</FancyButton>
 ```
 
 ---

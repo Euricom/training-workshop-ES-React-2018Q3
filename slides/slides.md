@@ -47,6 +47,7 @@ Copyright (c) 2018 Euricom nv. Licensed under the [MIT license](https://opensour
   - [Javascript Refresh](./javascript-refresh.md)
 - React
   - [React Introduction](./react-introduction.md)
+  - [React Styling](./react-styling.md)
   - [React Patterns](./react-patterns.md)
   - [React Forms](./react-forms.md)
   - [React Router](./react-router.md)
